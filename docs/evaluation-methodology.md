@@ -46,6 +46,14 @@ python3 scripts/codex-skill-eval.py --fixture evals/public/codex-smoke.json
 
 Adding `--live` makes a model call and can incur provider charges. A successful process exit confirms execution only; the adapter does not score answer quality or prove that the skill was read.
 
+## Measuring what a skill adds to a short brief
+
+Write the first prompt as someone outside the specialty might: give the goal, known facts and real constraints in ordinary language. Supply enough context to make the task feasible. Leave domain decisions and acceptance checks out of the prompt when those are the behaviours the skill is expected to add. Include both simple and complex tasks with short briefs when possible. A short brief can describe a complex outcome, such as cutting through an interactive 3D object to reveal its layers.
+
+Define the scoring criteria before running the test and keep them outside the generation prompt. Compare independent sessions using the same prompt, model, files and tools. Give only one condition the target skill. Where possible, check the resulting artefact directly, such as by counting 3D requests before a visitor interacts. Use a separate discovery test if the skill text was supplied explicitly.
+
+A detailed brief can also be useful as a control. Run both conditions again with the same details and checks. Report short- and detailed-brief results separately so readers can see which decisions the request supplied and which the skill helped surface.
+
 ## Decision rule for future claims
 
 State a model/harness result only after a saved artifact exists for that exact pair. Label its fixture type and date. Do not collapse individual harness results into one cross-model score. Negative, tied and pending results remain visible.

@@ -24,6 +24,14 @@ Remove until the task is clear, then stop. One focal point per view, generous sp
 - Light-grey text on white for secondary information (#999 on white is 2.85:1, fails).
 - Emptiness that hides a lack of decisions: a bare screen with no identity.
 
+## First view and subtraction pass [F]
+
+Use this pass when the brief calls for a minimalist or restrained direction. Start with the page's goal and its real content. Choose one recognizable cue from the project, such as its product photography, typography or existing brand palette. Use design references to name why a choice works; borrow the principle without duplicating a screen. Compare an editorial reference with a shipped flow when the task includes interaction.
+
+Inspect the first view at the relevant phone, tablet and desktop widths before adding motion. The visitor should know where they are, what matters first and how to proceed. Remove an eyebrow, subtitle, badge or container if removing it leaves the same facts, choices and next action. Keep prices, material terms, control labels, visible focus and error recovery where users need them. In dense tools, keep useful rows and aligned values; use restraint in decoration to make room for information.
+
+Compare before and after in the same state and viewport. Record the surplus removed, the useful information retained and one visible detail that carries the project's identity. Review comprehension separately from appearance.
+
 ## Accessibility risks
 Low-contrast subtle greys; placeholder-only labels; tiny touch targets in sparse layouts (space is cheap, so enlarge them); invisible focus because "it looks cleaner".
 

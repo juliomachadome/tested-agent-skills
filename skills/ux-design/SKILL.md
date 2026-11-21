@@ -44,11 +44,20 @@ AI tells to avoid (while reviewing or designing): generic heuristic lists not ti
 | AI output on screen: citations, confidence, abstention, drafts, streaming | `references/ai-features-ux.md` and `product-types/ai-assistant-chat.md` |
 | Running a review, finding format, per-screen checklist, mobile vs desktop, habit ethics | `references/review-method.md` |
 | Recurring defects (28 anti-patterns) | `references/real-screen-lessons.md` |
-| The without-reading test, script, pass/fail | `references/understand-without-reading.md` |
+| Hierarchy without reading, unfamiliar-language flow walkthrough, script and criteria | `references/understand-without-reading.md` |
 | A tour, spotlight or first-run hint is proposed | `references/guided-tours.md` |
 | Source, edition, read date, V/P status | `references/BIBLIOGRAPHY.md` |
 
 Evidence tags in the references: [C] consensus or standard, [M] single or correlational study, [F] practitioner rule, [X] myth.
+
+## Match the interaction to the task [F]
+
+- If the job or flow is unclear, map it before styling. For a visual fix to a working flow, start with `ui-design` and confirm that the existing tasks and states still work.
+- Identify the platform, primary device, input and context of use. Web on a phone still needs browser scrolling, zoom and keyboard access. Native flows should fit platform navigation, gestures and text scaling. On tablets and other resizable windows, account for orientation, split view and touch or keyboard. When the same task spans devices, keep the information and states consistent; adapt where and how the controls appear.
+- Keep a list for scanning similar items and a table for comparing shared fields. On narrow screens, prioritize the fields the decision needs and expose the rest where the user can find them. Consider cards when choices are independent and their previews matter.
+- Keep a short correction or retry in the current context. Use inline disclosure to reveal optional fields or details. Use a dialog when users must stop to make a focused decision; preserve a clear way back.
+- Keep one instruction per state. When a field error repeats a persistent format hint, show a single actionable message for the invalid state and keep it associated with the field. Remove status copy and steps that add no information or control. Preserve entered data and the useful parts of the existing flow in a targeted fix.
+- Hand off to `ui-design` the primary task, visible priorities, data needed for comparison, states, error messages and keyboard/focus behaviour. UI decisions about grouping and density must keep those tasks possible. Check the two together on the real content.
 
 ## Workflow
 
@@ -58,6 +67,8 @@ Evidence tags in the references: [C] consensus or standard, [M] single or correl
 3. Per screen: the one primary action, then every state (empty, loading, partial, error, success, offline, denied). A missing state is a defect.
 4. Name dangerous actions and choose Undo or confirm for each.
 5. Run the checklist and the without-reading test on the mock or build; hand styling to `ui-design`.
+
+A passing flow is the starting point. Compare how many steps and scrolls it takes to find the next action, how much data must be re-entered, and whether someone can recover without help. Report observations separately from visual preference.
 
 **Reviewing**
 1. Capture each relevant state at about 390 px and 1280 px; do a keyboard-only pass, 200 percent zoom and 320 px reflow.

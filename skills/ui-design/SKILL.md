@@ -22,6 +22,21 @@ Boundaries:
 ## Step 0: the project first
 Before any advice, read the current project: DESIGN.md, token files, the component library, ADRs, CLAUDE.md or AGENTS.md, and shipped screens. **Project rules win.** If a design system exists, work inside it and propose changes as a delta for the owner. Then fix platform, brand, devices, accessibility level (default WCAG 2.2 AA) and evidence (screenshots at 390, 820, 1440, light and dark).
 
+## Match the visual structure to the task [F]
+
+Use the task and states identified by `ux-design` to decide what needs emphasis and what can stay quiet. Preserve helpful structure, labels, locale and density in a targeted fix. Use an existing pattern when it already serves the task.
+
+Choose the starting layout from the primary use case. Start narrow when quick phone actions matter most; start wide when the main job is dense comparison or simultaneous panes. For responsive web, check where the content stops fitting across phone, tablet, split view and desktop; adapt density or pane count there. A tablet can be narrow in split view and may use touch, a pointer or a keyboard. For native apps, use the target platform's components, safe areas and text scaling. If the product ships on both, carry over priorities and states while adapting the controls and layouts to each platform.
+
+| What people need to do | Visual default |
+|---|---|
+| Scan repeated items | Compact rows with alignment and light separators. Keep the name, state and next useful action in predictable places. |
+| Compare several values across items | Table with consistent columns and aligned numbers. On narrow screens keep essential values comparable, using fewer columns plus details, a compact list, or a labelled scroll area for a genuinely wide table. |
+| Browse independent items or visual choices | Cards can help when each item needs a distinct preview, summary or action. Group shared controls once. |
+| Complete a form or recover from an error | Group related fields by task. Place actionable error text by its field and keep the focus state distinct. Add a summary when it helps users find multiple errors. |
+
+Remove boilerplate subtitles, repeated badges, nested panels and decoration whose absence would not change a decision or action. Start with alignment, type and spacing; add borders, fills or elevation only where they clarify grouping or interaction.
+
 ## Principles
 1. **System before screen.** Scales for type, space, color, radius, elevation and motion are decided once as tokens; screens only pick from them.
 2. **Hierarchy comes from few levers.** Size, weight, tone, position, space. Two or three text tones, two or three weights. To emphasize one thing, quiet its competitors.
@@ -86,11 +101,15 @@ Before any advice, read the current project: DESIGN.md, token files, the compone
 - [ ] Type uses only scale roles; measure and leading in range
 - [ ] One clear primary action; dangerous actions are not primary
 - [ ] Spacing from the scale; grouping unambiguous
+- [ ] Repeated data still scans and compares at narrow widths; any larger surface earns the space it uses
 - [ ] Targets met; focus visible and not obscured
 - [ ] States designed, including waits with progress
 - [ ] 320 px, 200% zoom, longest string, reduced motion tested
 - [ ] Safe areas respected; facts consistent
 - [ ] Chosen style named, and its accessibility risks checked
+
+When modifying an existing screen, compare before and after at the same viewport and state. Record whether the intended priority is easier to see and whether fewer useful rows or controls fit. Report functional pass/fail and visual quality separately.
+For responsive work, check narrow, intermediate and wide layouts and one width either side of any changed breakpoint. Include tablet portrait, landscape or split view when relevant, and test larger text or browser zoom.
 
 ## Output format for a review or restyle
 ```

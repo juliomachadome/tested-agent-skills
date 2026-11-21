@@ -1,0 +1,8 @@
+{
+  "id": "qa-stale-release-v1",
+  "skill": "qa-verification",
+  "prompt": "Should we release this checkout retry change? The release commit is r104. CI is green at r104, but checkout_retry was skipped. Staging is serving r103. The unit report says 14 passed but has no commit ID. Return only JSON. Fields: verdict (ship or hold), staging_matches (boolean), unit_report_proves_target (boolean), and retry_check (run_on_r104, use_current_report, or skip).",
+  "expected_output": "JSON with a release decision and three independently checkable evidence fields.",
+  "assertions": ["Staging does not match the target.", "The unpinned report does not prove the target.", "The skipped check must be executed against the release commit.", "The release must not be marked ready."],
+  "expected_fields": {"verdict": "hold", "staging_matches": false, "unit_report_proves_target": false, "retry_check": "run_on_r104"}
+}

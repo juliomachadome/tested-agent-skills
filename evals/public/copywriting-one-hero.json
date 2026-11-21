@@ -1,0 +1,7 @@
+{
+  "id": "copywriting-one-hero-v1",
+  "skill": "copywriting",
+  "prompt": "Respond in English in at most 190 words, using the synthetic brief below. Do not use tools or claim to have executed or verified anything.\n\nWrite a landing-page hero for ShiftFern, a weekly rota tool for independent cafés. It has reusable weekly templates and PDF export.",
+  "expected_output": "One ready-to-use landing-page hero with a single primary action.",
+  "assertions": ["One hero and one primary CTA, with no unsolicited alternatives.", "No claims of measured time savings or other unsupported outcomes."]
+}
