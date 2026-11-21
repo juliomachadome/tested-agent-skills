@@ -1,0 +1,38 @@
+# Tested Agent Skills
+
+> A portable collection of 35 Agent Skills and 26 Claude Code role definitions for marketing, business, engineering, design and data. Install only the needed skill folders; use the guide for the selected harness.
+
+Skills are plain Markdown folders in the Agent Skills format. Claude Code supports the repository's native agent definitions. Other harnesses use the same skills plus portable role briefs where needed. Historical comparisons were run on Claude models; see the evaluation and compatibility documents for the scope of that evidence.
+
+## Start here
+
+- [README](README.md): Project overview, focused installation commands, compatibility summary and license.
+- [Installation script](scripts/install.sh): Links selected skills and, for Claude Code, native agents. Use `--dry-run` before changing a machine.
+- [Skill index](SKILLS.md): Every skill, its purpose and path.
+- [Catalog](CATALOG.md): English discovery catalog with evaluation status.
+
+## Harness guides
+
+- [Claude Code guide](docs/claude-code.md): Focused install, native agents, context controls, updates and safety boundaries.
+- [Codex guide](docs/codex.md): Focused install, portable role briefs and isolated smoke testing.
+- [Compatibility](docs/compatibility.md): Exact support level and evidence boundary for each environment.
+- [Loading, cost and safety boundaries](docs/loading-and-cost.md): Progressive loading, context cost and permission limits.
+
+## Roles and evaluation
+
+- [Portable agent profiles](agent-profiles/README.md): Use the 26 role profiles outside Claude Code.
+- [Evaluation methodology](docs/evaluation-methodology.md): What the historical Claude-based results measure and what they do not.
+- [Evaluation summary](docs/evaluation-summary.md): Aggregate historical results and limits.
+- [Public fixtures](evals/public/README.md): Synthetic fixture rules and safe result reporting.
+
+## Trust and participation
+
+- [Security and privacy](SECURITY.md): Release, installation and evaluation boundaries.
+- [Attribution](ATTRIBUTION.md): CC BY-SA credit templates for projects, products and agents.
+- [Contributing](CONTRIBUTING.md): Evidence, licensing, safety and cross-harness contribution rules.
+
+## Optional
+
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Support](SUPPORT.md)
+- [Changelog](CHANGELOG.md)

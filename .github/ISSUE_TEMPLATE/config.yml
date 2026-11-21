@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security and privacy guidance
+    url: https://github.com/juliomachadome/tested-agent-skills/blob/main/SECURITY.md
+    about: Do not put sensitive security or privacy details in a public issue.
+  - name: Contribution guide
+    url: https://github.com/juliomachadome/tested-agent-skills/blob/main/CONTRIBUTING.md
+    about: Read the contribution and public-release boundaries before opening a proposal.
+  - name: Reproduce public checks
+    url: https://github.com/juliomachadome/tested-agent-skills/blob/main/docs/evaluation-methodology.md
+    about: Use synthetic fixtures and record harness/model context before reporting an evaluation.

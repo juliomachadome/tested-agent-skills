@@ -1,0 +1,102 @@
+{
+  "always": {
+    "skills": [
+      "agent-orchestration"
+    ],
+    "agents": []
+  },
+  "profiles": {
+    "marketing": {
+      "skills": [
+        "copywriting",
+        "ad-creatives",
+        "viral-content",
+        "storytelling",
+        "paid-traffic",
+        "seo-geo",
+        "offers",
+        "sales",
+        "customer-support",
+        "lifecycle-messaging",
+        "media-production",
+        "growth-analytics",
+        "redigir"
+      ],
+      "agents": []
+    },
+    "engineering": {
+      "skills": [
+        "engineering-playbook",
+        "code-craft",
+        "code-review-criteria",
+        "software-architecture",
+        "software-security",
+        "cloud-deploy-ops",
+        "qa-verification",
+        "web-performance",
+        "mobile-app-engineering",
+        "llm-engineering",
+        "ui-design",
+        "ux-design",
+        "data-engineering",
+        "web-motion"
+      ],
+      "agents": [
+        "code-reviewer",
+        "web-performance-engineer",
+        "qa-verifier",
+        "real-user-tester",
+        "ui-ux-designer",
+        "security-reviewer",
+        "fullstack-engineer",
+        "nextjs-architect"
+      ]
+    },
+    "business": {
+      "skills": [
+        "market-research",
+        "business-model-finance",
+        "product-creation",
+        "product-management",
+        "offers",
+        "data-analysis",
+        "data-visualization-dashboards",
+        "growth-analytics",
+        "process-improvement"
+      ],
+      "agents": []
+    },
+    "content": {
+      "skills": [
+        "storytelling",
+        "viral-content",
+        "media-production",
+        "copywriting",
+        "web-motion",
+        "redigir"
+      ],
+      "agents": []
+    }
+  },
+  "quarantine": {
+    "skills": [],
+    "agents": [],
+    "_why": "Empty since 21/11: privacy-lgpd-gdpr was removed from the repo (recoverable from tag baseline-819f4bd)."
+  },
+  "default": {
+    "agents": [
+      "code-reviewer",
+      "qa-verifier",
+      "real-user-tester",
+      "ui-ux-designer",
+      "web-performance-engineer",
+      "security-reviewer",
+      "fullstack-engineer",
+      "nextjs-architect"
+    ],
+    "_why": "Default install (no --profile): every skill outside quarantine, and only agents with a structural reason to run in a separate context: independent review (code-reviewer, which won the three-arm eval; qa-verifier; security-reviewer), heavy browser output (real-user-tester, ui-ux-designer, web-performance-engineer), parallel edits in a worktree (fullstack-engineer) and design on another model (nextjs-architect). The last three were added on 21/11 from real use in past sessions (45, 30 and 19 calls); they are not yet compared with the inline skill. Knowledge-work agents stay in the repo: the main session loads their skill instead. Install any by name with --agent.",
+    "skills_excluded": [],
+    "_why_skills": "Default install: every skill in skills/ (privacy-lgpd-gdpr and language-curriculum, which lost against no skill, left the repo on 21/11; language-curriculum moved to the English-course project).",
+    "_why_agents_in_profiles": "Profiles list only default agents (21/11; engineering lists all 8). Any other agent in agents/ installs by name: install.sh --agent NAME[,NAME...]."
+  }
+}

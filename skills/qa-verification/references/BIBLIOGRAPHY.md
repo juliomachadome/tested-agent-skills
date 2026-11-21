@@ -1,0 +1,50 @@
+# Bibliography: qa-verification
+
+Checked 18/11/2026 (merged with the former sources list; entry numbers are the ids cited in the reference files as Q1, Q2 and so on). Status: **V** = identity (title, authors as far as the catalogue shows, year) matched to the ISBN in OpenLibrary (`https://openlibrary.org/isbn/<isbn>.json`) this pass; **P** = official page fetched this pass and the relevant terms found (earlier read dates are kept where the text was studied then); **S** = exists, text not read this pass; **U** = unverified. Nothing is quoted; ideas are restated. Vendor data is labelled.
+
+## Standards, syllabi and papers
+1. Bach, J.; Bolton, M. "Testing and Checking Refined". 2013. https://www.satisfice.com/blog/archives/856 . **P** 18/11/2026 (title matches; read 12/11/2026). Supports: testing vs checking (SKILL.md principle 2).
+2. Testing Library. *Guiding Principles*. https://testing-library.com/docs/guiding-principles/ . **P** 18/11/2026. Supports: test the way users use the software.
+3. Bach, J. "Heuristic Risk-Based Software Testing" (1999), see https://www.satisfice.com/rapid-software-testing . **S**: landing page opens, the 1999 article was not located or read. Supports: risk-first testing (idea only).
+4. ISTQB. *Certified Tester Foundation Level Syllabus v4.0 / v4.0.1* (official overview page, syllabus PDF). https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/ . **P** 18/11/2026 (page; syllabus PDF read 15/11/2026). Supports: risk levels, acceptance criteria.
+5. Vocke, H. "The Practical Test Pyramid". martinfowler.com, 2018. https://martinfowler.com/articles/practical-test-pyramid.html . **P** 18/11/2026.
+6. Dodds, K. C. "The Testing Trophy and Testing Classifications", 2021, https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications ; Fowler, M. "On the Diverse And Fantastical Shapes of Testing", 2021, https://martinfowler.com/articles/2021-test-shapes.html . **P** 18/11/2026 (both pages). Supports: suite shape.
+7. Vitest. *Command Line Interface* (`related`, `--changed`, `--run`, `--passWithNoTests`, `--allowOnly`). https://vitest.dev/guide/cli . **P** 18/11/2026.
+8. Vercel. *Turborepo documentation* (run reference, constructing CI). https://turborepo.dev/docs/reference/run , https://turborepo.dev/docs/crafting-your-repository/constructing-ci . **P** 18/11/2026.
+9. Microsoft. *Playwright test CLI* (`--only-changed`, `--last-failed`, `--grep`, `--repeat-each`, `--forbid-only`). https://playwright.dev/docs/test-cli . **P** 18/11/2026.
+10. Microsoft. *Playwright test retries* and *annotations*. https://playwright.dev/docs/test-retries , https://playwright.dev/docs/test-annotations . **P** 18/11/2026 (retries page; annotations read 13/11/2026).
+11. Beck, K. "Canon TDD". 2023. https://newsletter.kentbeck.com/p/canon-tdd . **P** 18/11/2026.
+12. ISTQB CTFL v4.0.1, chapter 4 (equivalence partitioning, 2-value and 3-value boundary analysis, decision tables, state transitions, error guessing, exploratory, checklist-based). Same page as 4. **P** (PDF read 15/11/2026).
+13. Microsoft. *Playwright best practices*, *locators*, *actionability*, *assertions*, *timeouts*. https://playwright.dev/docs/best-practices , https://playwright.dev/docs/locators , https://playwright.dev/docs/actionability , https://playwright.dev/docs/test-assertions , https://playwright.dev/docs/test-timeouts . **P** 18/11/2026 (first four fetched; timeouts read 13/11/2026).
+14. Microsoft. *Playwright* web server, projects, auth, clock, mock, trace viewer. https://playwright.dev/docs/test-webserver , https://playwright.dev/docs/auth , https://playwright.dev/docs/clock , https://playwright.dev/docs/mock , https://playwright.dev/docs/trace-viewer-intro . **P** 18/11/2026 (auth, clock, mock, trace viewer fetched; web server and projects read 13/11/2026).
+15. Microsoft. *Playwright visual comparisons*. https://playwright.dev/docs/test-snapshots . **P** 18/11/2026.
+16. Deque. *axe-core API and rule descriptions* (tags, `incomplete`, rules disabled by default). https://github.com/dequelabs/axe-core/blob/develop/doc/API.md , https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md . **P** 18/11/2026.
+17. Deque. *Automated Accessibility Coverage Report* (about 57% of issues by volume). https://www.deque.com/automated-accessibility-coverage-report/ . **P** 18/11/2026. VENDOR DATA.
+18. W3C. *What's New in WCAG 2.2*. https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/ . **P** 18/11/2026.
+19. Stryker Mutator. *Documentation*. https://stryker-mutator.io/docs/ . **P** 18/11/2026 (page opens; mutation terms found; tools beyond Stryker not read).
+20. Fowler, M. "TestCoverage". 2012. https://martinfowler.com/bliki/TestCoverage.html . **P** 18/11/2026.
+21. fast-check. *Why property-based testing*. https://fast-check.dev/docs/introduction/why-property-based/ . **P** 18/11/2026.
+22. Pact Foundation. *Pact documentation* (consumer-driven contracts). https://docs.pact.io . **P** 18/11/2026.
+23. Stripe. *Testing* and *Go-live checklist*. https://docs.stripe.com/testing , https://docs.stripe.com/get-started/checklist/go-live . **P** 18/11/2026 (pages open; testing page is long, only test-mode terms matched by search; test card numbers not copied).
+24. GitHub. *Actions and required status checks documentation* (concurrency, scheduled events, troubleshooting required checks). https://docs.github.com/en/actions/using-jobs/using-concurrency , https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows , https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/troubleshooting-required-status-checks . **P** 18/11/2026 (caching page read 13/11/2026).
+25. Vercel. *Protection Bypass for Automation*. https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation . **P** 18/11/2026.
+26. DORA. *DORA's software delivery performance metrics*. https://dora.dev/guides/dora-metrics-four-keys/ . **P** 18/11/2026.
+27. Next.js. *Production checklist*, https://nextjs.org/docs/app/guides/production-checklist ; Supabase. *Production checklist*, https://supabase.com/docs/guides/deployment/going-into-prod . **P** 18/11/2026.
+28. Google Testing Blog: Micco, J. "Flaky Tests at Google and How We Mitigate Them" (2016); Wacker, M. "Just Say No to More End-to-End Tests" (2015); Stewart, S. "Test Sizes" (2010). https://testing.googleblog.com/2016/05/flaky-tests-at-google-and-how-we.html , https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html , https://testing.googleblog.com/2010/12/test-sizes.html . **P** 18/11/2026 (all three fetched). Supports: flaky rates, 70/20/10 as a first guess.
+29. Crispin, L., Gregory, J. *Agile Testing: A Practical Guide for Testers and Agile Teams*. Addison-Wesley, 2009. ISBN 978-0321534460. **V**. Supports: quadrants, whole-team testing.
+30. Gregory, J., Crispin, L. *More Agile Testing*. Addison-Wesley, 2014. ISBN 978-0321967053. **V** (catalogue lists Gregory; the co-author is not in the record). Supports: testing in larger teams, exploration.
+31. Whittaker, J., Arbon, J., Carollo, J. *How Google Tests Software*. Addison-Wesley, 2012. ISBN 978-0321803023. **V**. Supports: small/medium/large tests, risk and attack-style testing.
+32. Hendrickson, E. *Explore It! Reduce Risk and Increase Confidence with Exploratory Testing*. Pragmatic Bookshelf, 2013. ISBN 978-1937785024. **V**. Supports: charters (`playbooks.md` 6).
+33. Fowler, M. "TestPyramid". martinfowler.com, 2012. https://martinfowler.com/bliki/TestPyramid.html . **P** 18/11/2026.
+34. Fowler, M. "Eradicating Non-Determinism in Tests". 2011. https://martinfowler.com/articles/nonDeterminism.html . **P** 18/11/2026. Supports: causes of flaky tests (diagnosis-playbook).
+35. Luo, Q.; Hariri, F.; Eloussi, L.; Marinov, D. "An empirical analysis of flaky tests". *Proc. 22nd ACM SIGSOFT FSE*, 2014. DOI 10.1145/2635868.2635920 . **P** (landing level): Crossref record matches title, authors, venue and date 11/11/2014; the publisher page returned a bot check and the paper text was not read. Supports: root-cause categories of flaky tests (async wait, concurrency, test order) from the paper's own analysis; figures not reused.
+36. Papadakis, M. et al. "Mutation Testing Advances: An Analysis and Survey". *Advances in Computers*, Elsevier, 2019. DOI 10.1016/bs.adcom.2018.03.015 . **P** (landing level): Crossref matches title, venue and year; its record carries no author list, so authors beyond the first name are not confirmed; text not read. Supports: what a mutation score means.
+37. Myers, G. J.; Badgett, T.; Sandler, C. *The Art of Software Testing*, 3rd ed. Wiley, 2011. ISBN 978-1118031964. **V**. Further reading.
+38. Kaner, C.; Bach, J.; Pettichord, B. *Lessons Learned in Software Testing*. Wiley, 2001. ISBN 978-0471081128. **V**. Further reading.
+39. Beck, K. *Test-Driven Development: By Example*. Addison-Wesley, 2002 (catalogue edition dated 2006). ISBN 978-0321146533. **V** (title, ISBN; author via the works record). Further reading.
+40. Winters, T.; Manshreck, T.; Wright, H. *Software Engineering at Google*. O'Reilly, 2020. ISBN 978-1492082798. **V**. Further reading.
+41. Forsgren, N.; Humble, J.; Kim, G. *Accelerate*. IT Revolution, 2018. ISBN 978-1942788331. **V**. Further reading.
+42. Stripe. *Webhooks* (signature verification, retries). https://docs.stripe.com/webhooks . **P** 18/11/2026.
+43. W3C. *Web Content Accessibility Guidelines (WCAG) 2.2*, Recommendation. https://www.w3.org/TR/WCAG22/ . **P** 18/11/2026 (page opens; success criteria cited are those listed in 18).
+
+Totals: 43 entries. Verified (V or P): 42 = 97.7% (V: 11, P: 31, of which 2 at landing-page level). Seen but unread (S): 1 (entry 3). Unverified (U): 0. Caveats inside entries: 17 vendor data; 23 only test-mode terms matched; 36 authors not confirmed; 19 other mutation tools not read.

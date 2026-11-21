@@ -1,0 +1,3 @@
+# The catalog is generated documentation, not the project's source language.
+catalog/index.html linguist-generated=true linguist-detectable=false
+catalog/template.html linguist-generated=true linguist-detectable=false

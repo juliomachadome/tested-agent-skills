@@ -1,0 +1,14 @@
+# Product management for AI features
+
+Extra checks when a feature depends on a model. Pair with `prioritisation.md`, `prd-template.md` and, when real quality disappoints, the last row of `diagnosis-playbook.md`. Eval and prompt method: `skills/llm-engineering`; interface trust patterns: `skills/ux-design`.
+
+1. **Name the problem class first.** Classification, ranking, recommendation, regression, clustering, anomaly detection or text generation. A wrong class (for example, asking a generator to give exact numbers) is the cheapest mistake to catch early and the most expensive to find late.
+2. **Data before model.** Ask what data exists, who owns it, its quality and its legal basis. A feature with no usable data is a data project first.
+3. **Price the automation.** Automate only when the cost of the manual process exceeds build cost plus running cost plus the cost of detecting mistakes plus the expected cost of mistakes nobody catches. State the degree: assist (person does, tool suggests), augment (tool drafts, person approves), or act alone (rare, reversible, low stakes only).
+4. **Hard constraints before preferences.** Privacy, regulation and data-residency limits filter the list of possible models and vendors first; then team skills and cost. Start with a hosted model to test value, revisit self-hosting only after fit is proven. Keep models swappable behind one interface and expect to use more than one.
+5. **Success needs a measured bar, not a demo.** Write the acceptance bar as numbers on a labelled test set (and which error is worse: wrong answer or no answer) before building; a demo that works is not evidence.
+6. **Roll out as risk management.** Shadow mode (run beside the live path, compare, show nobody), then a small A/B or canary cohort with a pause between steps, then wider. Plan drift monitoring and a retraining or re-evaluation schedule; an unattended model degrades silently.
+7. **Trust contract in the interface.** Show that AI is involved, say what it can and cannot do, let the person edit, approve or reject, show uncertainty without false precision, and make failure visible and recoverable. Onboarding order: what it is, the benefit, the limitation, how their corrections improve it.
+8. **Bias and oversight.** Look for bias in the training data, in the algorithm and in feedback loops (the product's own output becoming tomorrow's input). Keep human review for decisions that affect people and an audit trail for each output.
+9. **Metrics as signals.** One north-star metric for alignment; every other metric must change a decision. Beware a metric that becomes the goal: usage or acceptance rate can rise while quality falls.
+10. **Cost is a product requirement.** Estimate cost per task and per active user at expected volume, set a budget, and decide what happens when the budget is exhausted (degrade, queue, or stop).

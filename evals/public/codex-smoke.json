@@ -1,0 +1,10 @@
+{
+  "id": "engineering-playbook-read-smoke-v1",
+  "skill": "engineering-playbook",
+  "prompt": "Using the engineering-playbook skill, answer in one sentence: what should be checked before changing a codebase? Do not access the network or use any connector.",
+  "expected_output": "One concise sentence that identifies project rules and relevant existing context as prerequisites.",
+  "assertions": [
+    "The requested skill is available in the isolated project.",
+    "The command uses ephemeral, user-config-free, read-only Codex options."
+  ]
+}

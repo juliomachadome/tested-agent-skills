@@ -1,0 +1,11 @@
+# Takes effect only when the repository's main-branch ruleset requires
+# CODEOWNERS review. The public release owner reviews all sensitive paths.
+* @juliomachadome
+/skills/ @juliomachadome
+/agents/ @juliomachadome
+/agent-profiles/ @juliomachadome
+/scripts/ @juliomachadome
+/.github/ @juliomachadome
+/SECURITY.md @juliomachadome
+/LICENSE @juliomachadome
+/ATTRIBUTION.md @juliomachadome
