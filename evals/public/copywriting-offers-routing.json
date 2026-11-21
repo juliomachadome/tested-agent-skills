@@ -1,0 +1,13 @@
+{
+  "id": "copywriting-offers-routing-v1",
+  "skill": "offers",
+  "routing_alternatives": [
+    "copywriting"
+  ],
+  "prompt": "A fictional coffee-rota app has a fixed launch budget. Set the terms for a proposed refund offer: state the eligibility window, the conditions a buyer must meet, and which facts the owner must validate before publishing. Give terms and decision notes only.",
+  "expected_output": "A proposed offer, its eligibility conditions and facts requiring validation.",
+  "assertions": [
+    "Inspect routing separately: offers is the expected route; copywriting is a near miss.",
+    "File reads absent from the trace are inconclusive."
+  ]
+}
