@@ -46,6 +46,8 @@ python3 scripts/codex-skill-eval.py --fixture evals/public/codex-smoke.json
 
 Adding `--live` makes a model call and can incur provider charges. A successful process exit confirms execution only; the adapter does not score answer quality or prove that the skill was read.
 
+The [paired runner](../evals/public/README.md#run-a-paired-development-check) supports explicit exposure, natural and directed discovery. Use --condition to choose an isolated arm, --runs to repeat fresh sessions, or --answers-dir for private blind review. A completed response, an observed skill-file read and a scored answer are distinct observations.
+
 ## Measuring what a skill adds to a short brief
 
 Write the first prompt as someone outside the specialty might: give the goal, known facts and real constraints in ordinary language. Supply enough context to make the task feasible. Leave domain decisions and acceptance checks out of the prompt when those are the behaviours the skill is expected to add. Include both simple and complex tasks with short briefs when possible. A short brief can describe a complex outcome, such as cutting through an interactive 3D object to reveal its layers.

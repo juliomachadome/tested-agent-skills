@@ -1,10 +1,14 @@
 """Deterministic tests for the paired runner, with no model calls."""
 
 import importlib.util
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("skill_compare", ROOT / "scripts" / "codex-skill-compare.py")
@@ -80,3 +84,45 @@ class SkillCompareTests(unittest.TestCase):
             fixture.write_text(json.dumps({"id": "case", "skill": "../outside", "prompt": "Synthetic."}))
             with self.assertRaisesRegex(ValueError, "slug"):
                 compare.load_fixture(fixture)
+
+    def test_repeated_pairs_have_fresh_invocations_and_indexed_labels(self):
+        fixture = ROOT / "evals/public/qa-stale-release.json"
+        version = SimpleNamespace(stdout="codex-cli test")
+        with patch.object(compare.subprocess, "run", return_value=version), patch.object(
+            compare, "invoke", return_value=("answer", {"status": "completed"})
+        ) as invoke, redirect_stdout(io.StringIO()) as output:
+            status = compare.main(["--fixture", str(fixture), "--model", "example", "--runs", "3", "--live"])
+        self.assertEqual(status, 0)
+        self.assertEqual(invoke.call_count, 6)
+        runs = json.loads(output.getvalue())["runs"]
+        self.assertEqual([run["run_index"] for run in runs], list(range(1, 7)))
+        for index in range(0, 6, 2):
+            self.assertEqual({run["condition"] for run in runs[index:index + 2]}, {"with", "without"})
+            self.assertEqual({run["pair_index"] for run in runs[index:index + 2]}, {index // 2 + 1})
+
+    def test_routing_exposes_the_alternative_in_both_arms_and_records_its_observed_read(self):
+        fixture = compare.load_fixture(ROOT / "evals/public/copywriting-offers-routing.json")
+        source = ROOT / "skills" / "offers"
+        args = SimpleNamespace(discovery="natural", timeout=10, model="example")
+
+        def run(argv, **kwargs):
+            project = Path(argv[argv.index("-C") + 1])
+            skills = project / ".agents/skills"
+            alt = skills / "copywriting/SKILL.md"
+            self.assertTrue(alt.is_file())
+            self.assertFalse((project / "AGENTS.md").exists())
+            self.assertEqual((skills / "offers/SKILL.md").is_file(), condition == "with")
+            raw = [
+                {"type": "item.completed", "item": {
+                    "type": "command_execution", "exit_code": 0, "command": "cat " + str(alt),
+                    "aggregated_output": "name: copywriting"}},
+                {"type": "item.completed", "item": {"type": "agent_message", "text": "reply"}},
+                {"type": "turn.completed"},
+            ]
+            return SimpleNamespace(stdout="\n".join(map(json.dumps, raw)), returncode=0)
+
+        for condition in ("with", "without"):
+            with self.subTest(condition=condition), patch.object(compare.subprocess, "run", side_effect=run):
+                _, report = compare.invoke(fixture, source, condition, args)
+                self.assertEqual(report["routing_file_reads"], {"copywriting": "observed"})
+                self.assertEqual(report["project_file_read"], "not_observed" if condition == "with" else None)

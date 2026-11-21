@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -55,9 +56,24 @@ class PublicDocsTests(unittest.TestCase):
 
     def test_evaluation_matrix_covers_each_public_skill_once(self):
         matrix = (ROOT / "docs" / "skill-evaluation-matrix.md").read_text(encoding="utf-8")
-        rows = re.findall(r"^\| `([a-z0-9-]+)` \|(?:[^|\n]*\|){4}$", matrix, re.MULTILINE)
+        rows = re.findall(r"^\| `([a-z0-9-]+)` \|(?:[^|\n]*\|){4} ([^|]+) \| ([^|]+) \| ([^|]+) \|$", matrix, re.MULTILINE)
         public_skills = [file.parent.name for file in (ROOT / "skills").glob("*/SKILL.md")]
-        self.assertCountEqual(rows, public_skills)
+        self.assertCountEqual([row[0] for row in rows], public_skills)
+        fixtures = {}
+        for path in (ROOT / "evals/public").glob("*.json"):
+            fixture = json.loads(path.read_text(encoding="utf-8"))
+            self.assertNotIn(fixture["id"], fixtures)
+            fixtures[fixture["id"]] = fixture["skill"]
+        for skill, ids, status, kinds in rows:
+            with self.subTest(skill=skill):
+                self.assertIn(status, {"proposed", "fixture", "run", "reported"})
+                self.assertRegex(kinds, r"^(ci|judge|human) / (ci|judge|human)$")
+                if status == "proposed":
+                    self.assertEqual(ids, "—")
+                else:
+                    for fixture_id in ids.split(", "):
+                        self.assertIn(fixture_id, fixtures)
+                        self.assertEqual(fixtures[fixture_id], skill)
 
 
 if __name__ == "__main__":

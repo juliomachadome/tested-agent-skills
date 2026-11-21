@@ -40,6 +40,13 @@ def load_fixture(path: Path) -> dict:
             raise ValueError(f"fixture {key} must be a lowercase slug")
     if not isinstance(fixture.get("prompt"), str) or not fixture["prompt"].strip():
         raise ValueError("fixture prompt is required")
+    alternatives = fixture.get("routing_alternatives", [])
+    if not isinstance(alternatives, list) or not all(
+        isinstance(skill, str) and FIXTURE_NAME.fullmatch(skill) for skill in alternatives
+    ):
+        raise ValueError("routing_alternatives must be a list of skill slugs")
+    if fixture["skill"] in alternatives or len(alternatives) != len(set(alternatives)):
+        raise ValueError("routing alternatives must be unique and different from the target skill")
     expected = fixture.get("expected_fields", {})
     if not isinstance(expected, dict):
         raise ValueError("expected_fields must be a JSON object")
@@ -63,9 +70,15 @@ def prepare(project: Path, source: Path, fixture: dict, condition: str, discover
     return task, skill_file
 
 
-def parse_output(stdout: str, target: Path | None) -> tuple[str, dict]:
+def parse_output(
+    stdout: str, target: Path | None, alternatives: tuple[Path, ...] = (),
+) -> tuple[str, dict]:
+    reads = {skill_file: "not_observed" for skill_file in alternatives}
+    if target is not None:
+        reads[target] = "not_observed"
+    references = set()
     answer, usage, tool_calls = "", None, 0
-    completed = read_observed = False
+    completed = False
     for line in stdout.splitlines():
         try:
             event = json.loads(line)
@@ -88,20 +101,32 @@ def parse_output(stdout: str, target: Path | None) -> tuple[str, dict]:
             answer = item.get("text") or ""
         elif kind in {"command_execution", "mcp_tool_call", "web_search", "file_change", "collab_tool_call"}:
             tool_calls += 1
-        if target is not None and kind == "command_execution" and item.get("exit_code") == 0:
-            relative = f".agents/skills/{target.parent.name}/{target.name}"
+        if kind == "command_execution" and item.get("exit_code") == 0:
             command = item.get("command") or ""
             excerpt = item.get("aggregated_output") or ""
-            paths = "|".join(re.escape(path) for path in (str(target), relative, "./" + relative))
-            if re.search(r"(?:^|[\s\"'])(" + paths + r")(?=$|[\s\"';])", command) and re.search(
-                r"(?m)^name:\s*" + re.escape(target.parent.name) + r"\s*$", excerpt
-            ):
-                read_observed = True
+            for skill_file in reads:
+                relative = f".agents/skills/{skill_file.parent.name}/{skill_file.name}"
+                paths = "|".join(re.escape(path) for path in (str(skill_file), relative, "./" + relative))
+                if re.search(r"(?:^|[\s\"'])(" + paths + r")(?=$|[\s\"';])", command) and re.search(
+                    r"(?m)^name:\s*" + re.escape(skill_file.parent.name) + r"\s*$", excerpt
+                ):
+                    reads[skill_file] = "observed"
+                reference_dir = skill_file.parent / "references"
+                relative_reference_dir = relative.removesuffix("SKILL.md") + "references/"
+                reference_roots = "|".join(re.escape(root) for root in (
+                    relative_reference_dir, "./" + relative_reference_dir, str(reference_dir) + "/",
+                ))
+                for name in re.findall(r"(?:^|[\s\"'])(?:" + reference_roots + r")([a-zA-Z0-9_./-]+)", command):
+                    reference = (reference_dir / name).resolve()
+                    if reference.is_relative_to(reference_dir.resolve()) and reference.is_file():
+                        references.add(f"{skill_file.parent.name}/references/{reference.relative_to(reference_dir.resolve())}")
     return answer, {
         "turn_completed": completed,
         "usage": usage,
         "tool_calls_observed": tool_calls,
-        "project_file_read": ("observed" if read_observed else "not_observed") if target is not None else None,
+        "project_file_read": reads.get(target),
+        "routing_file_reads": {path.parent.name: reads[path] for path in alternatives},
+        "reference_paths_in_successful_commands": sorted(references),
     }
 
 
@@ -140,12 +165,17 @@ def invoke(fixture: dict, source: Path, condition: str, args: argparse.Namespace
     with tempfile.TemporaryDirectory(prefix="codex-skill-compare-") as folder:
         project = Path(folder)
         task, target = prepare(project, source, fixture, condition, args.discovery)
+        alternatives = []
+        for skill in fixture.get("routing_alternatives", []):
+            alternate_dir = project / ".agents" / "skills" / skill
+            shutil.copytree(source.parent / skill, alternate_dir, ignore=shutil.ignore_patterns("evals", "__pycache__", "*.pyc"))
+            alternatives.append(alternate_dir / "SKILL.md")
         command = ["codex", "exec", *FLAGS, "-m", args.model, "-C", folder, "-"]
         try:
             run = subprocess.run(command, input=task, text=True, capture_output=True, timeout=args.timeout)
         except subprocess.TimeoutExpired:
             return "", {"status": "timeout", "elapsed_seconds": round(time.monotonic() - started, 2)}
-    answer, evidence = parse_output(run.stdout, target)
+        answer, evidence = parse_output(run.stdout, target, tuple(alternatives))
     valid = run.returncode == 0 and evidence["turn_completed"] and bool(answer.strip())
     return answer if valid else "", {
         **evidence, "exit_code": run.returncode, "elapsed_seconds": round(time.monotonic() - started, 2),
@@ -160,6 +190,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--model", required=True)
     parser.add_argument("--condition", choices=("paired", "with", "without"), default="paired")
     parser.add_argument("--discovery", choices=("explicit", "natural", "forced"), default="explicit")
+    parser.add_argument("--runs", type=int, default=1, help="Number of fresh runs per condition (default: 1)")
     parser.add_argument("--seed", type=int, default=173)
     parser.add_argument("--timeout", type=int, default=120)
     parser.add_argument("--answers-dir", type=Path, help="Opt in to storing final answers in a private directory outside Git")
@@ -172,14 +203,30 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("skill does not exist in this checkout")
         if args.timeout <= 0:
             raise ValueError("timeout must be positive")
-        order = ["with", "without"] if args.condition == "paired" else [args.condition]
-        random.Random(args.seed).shuffle(order)
+        if args.runs <= 0:
+            raise ValueError("runs must be positive")
+        alternatives = fixture.get("routing_alternatives", [])
+        if alternatives and args.discovery != "natural":
+            raise ValueError("routing fixtures require natural discovery")
+        if any(not (source.parent / skill / "SKILL.md").is_file() for skill in alternatives):
+            raise ValueError("routing alternative skill does not exist in this checkout")
+        variants = ["with", "without"] if args.condition == "paired" else [args.condition]
+        shuffle = random.Random(args.seed)
+        planned = []
+        for pair_index in range(1, args.runs + 1):
+            order = variants.copy()
+            shuffle.shuffle(order)
+            for index, condition in enumerate(order):
+                planned.append({"run_index": len(planned) + 1, "pair_index": pair_index,
+                                "label": "AB"[index], "condition": condition})
         batch = private_batch(args.answers_dir) if args.live and args.answers_dir else None
         report = {
             "date": str(date.today()), "fixture_id": fixture["id"], "fixture_sha256": digest(args.fixture),
             "skill": fixture["skill"], "skill_sha256": digest(source / "SKILL.md"),
             "model": args.model, "discovery": args.discovery, "seed": args.seed,
-            "mode": "live" if args.live else "dry-run", "condition_order": order,
+            "mode": "live" if args.live else "dry-run",
+            "runs_per_condition": args.runs, "condition_order": [item["condition"] for item in planned],
+            "routing_alternatives": alternatives,
             "isolation_flags": FLAGS,
         }
         failed = False
@@ -187,13 +234,14 @@ def main(argv: list[str] | None = None) -> int:
             version = subprocess.run(["codex", "--version"], text=True, capture_output=True, check=True, timeout=10)
             report["harness_version"] = version.stdout.strip()
             report["runs"] = []
-            for index, condition in enumerate(order):
-                label = "AB"[index]
-                answer, evidence = invoke(fixture, source, condition, args)
+            for item in planned:
+                answer, evidence = invoke(fixture, source, item["condition"], args)
                 failed |= evidence["status"] != "completed"
                 if batch is not None and answer:
-                    write_answer(batch / f"{label}.txt", answer)
-                report["runs"].append({"label": label, "condition": condition, **evidence})
+                    label = item["label"]
+                    stem = label if args.runs == 1 else f"{item['pair_index']:02d}-{label}"
+                    write_answer(batch / f"{stem}.txt", answer)
+                report["runs"].append({**item, **evidence})
             if batch is not None:
                 print(f"Private answers: {batch}", file=sys.stderr)
         print(json.dumps(report, indent=2, ensure_ascii=False))
