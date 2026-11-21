@@ -1,0 +1,7 @@
+{
+  "id": "copywriting-requested-variants-v1",
+  "skill": "copywriting",
+  "prompt": "Respond in English in at most 190 words, using the synthetic brief below. Do not use tools or claim to have executed or verified anything.\n\nWe are A/B testing the ShiftFern landing page. For independent cafés, write two hero alternatives, each with its own primary button label. The product has reusable weekly rota templates and PDF export.",
+  "expected_output": "Two distinct hero alternatives, one primary CTA per alternative.",
+  "assertions": ["Two requested alternatives with a primary CTA in each.", "No claims of measured time savings or other unsupported outcomes."]
+}
