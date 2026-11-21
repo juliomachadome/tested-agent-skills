@@ -4,7 +4,7 @@
 
 The historical records compare a response produced with one skill against a response produced without repository skills for the same task. A blind judge sees the alternatives in both orders to reduce position bias. A win is recorded only when the judging process selects the skill-assisted response under its recorded rule; a tie is not treated as improvement.
 
-Separate trigger checks ask whether a skill is selected when it should be and stays inactive when it should not. The aggregate report calls a trigger record **strong** only when it has at least four correct triggers, zero false triggers and three runs. All other recorded trigger tests are **limited**; no record is **pending**.
+Separate trigger checks ask whether a skill is selected when it should be and stays inactive when it should not. The aggregate report calls a trigger record **strong** only when it has at least four correct triggers, zero false triggers and three runs. Other recorded trigger tests are **limited**; an entry without a trigger record is **pending**.
 
 See [Evaluation evidence](evaluation-summary.md) for the current aggregate counts.
 
@@ -28,13 +28,13 @@ The private holdout helps avoid tuning a skill to public cases. It is not publis
 
 Public fixtures are intentionally synthetic. They provide a shared smoke-test shape, not the exact historical benchmark. Run only with data you are permitted to send to the selected model provider, and record the exact model and harness.
 
-The Claude runner requires the Claude CLI and model access. The Codex adapter uses an ephemeral, read-only session and does not load normal user configuration. Its safe default is a dry run:
+The historical Claude runner is not included in the public release. The included Codex adapter prepares an ephemeral, read-only session and ignores normal user configuration. Its default is a dry run:
 
 ```bash
 python3 scripts/codex-skill-eval.py --fixture evals/public/codex-smoke.json
 ```
 
-Adding `--live` makes the actual model call and can incur provider charges. Both tools can make paid provider calls when live execution is enabled.
+Adding `--live` makes a model call and can incur provider charges. A successful process exit confirms execution only; the adapter does not score answer quality or prove that the skill was read.
 
 ## Decision rule for future claims
 
