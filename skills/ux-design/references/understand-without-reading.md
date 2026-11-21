@@ -90,6 +90,10 @@ Run it after driving the page to the state under test (login, click, wait for da
 - Numeric badges and counts carry information; the script scrambles digits too. If a count is part of the state, check separately that a visible badge shape exists.
 - Do not use real personal data on a screen you screenshot and share; the script also helps redact it.
 
+### Companion check with the real words
+
+Use intact copy in a separate check for a public landing page or important task state. Ask a reviewer unfamiliar with the screen what it offers, what happens next and where they would click or tap. For an error state, ask them to identify the correction and complete it without re-entering unaffected fields. Compare at the same viewport and starting state. Note redundant explanations separately from wording that communicates a price, condition, choice or way out. A short inspection is a diagnostic proxy; claims about how users actually complete the task need observation with users.
+
 ## 7. Sources
 - Gestalt grouping principles and Von Restorff effect: https://lawsofux.com/ (read 2026-11-15)
 - WCAG 1.4.1 Use of Color: https://www.w3.org/TR/WCAG22/ (referenced; level A)
