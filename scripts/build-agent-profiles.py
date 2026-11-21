@@ -24,8 +24,14 @@ def frontmatter(path: Path) -> str:
 
 
 def scalar(header: str, key: str) -> str | None:
-    match = re.search(rf"^{re.escape(key)}:\s*(.+)$", header, re.MULTILINE)
-    return match.group(1).strip() if match else None
+    match = re.search(rf"^{re.escape(key)}:[ \t]*(.+)$", header, re.MULTILINE)
+    if not match:
+        return None
+    value = match.group(1).strip()
+    if value in {">", ">-", ">+"}:
+        block = re.match(r"\n((?:[ \t]+[^\n]+\n?)+)", header[match.end():])
+        return " ".join(line.strip() for line in block[1].splitlines()) if block else None
+    return value
 
 
 def list_block(header: str, key: str) -> list[str]:

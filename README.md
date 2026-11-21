@@ -1,16 +1,14 @@
 # Tested Agent Skills
 
-**35 portable Agent Skills and 26 Claude Code subagents, measured on Claude models against a no-skill baseline.**
+Tested Agent Skills started in Claude Code. It includes 35 Agent Skills entries for Claude Code and Codex, plus 26 native Claude Code subagents and matching portable role briefs. The collection covers marketing, sales, product, engineering, design, and data.
+
+[Browse the skill catalog](CATALOG.md) · [Claude Code guide](docs/claude-code.md) · [Codex guide](docs/codex.md) · [Evaluation results](docs/evaluation-summary.md)
 
 License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Commercial use is allowed; attribution is required; shared adaptations use the same license.
 
-**Privacy and release policy:** public releases contain aggregate evidence and synthetic fixtures, not raw sessions, private holdouts or personal configuration. See [SECURITY.md](SECURITY.md) for boundaries, installation behavior and the release check.
-
-Skills for marketing, sales, product, engineering, design and data. Historical claims are backed by aggregate evidence and synthetic fixtures; raw answers and holdouts stay out of public releases.
-
 ## Quick start
 
-Clone the repository, then preview and install the skill you need:
+With Git, Bash, and Python 3 installed, clone the repository and preview the installation of the copywriting skill for Codex.
 
 ```bash
 git clone https://github.com/juliomachadome/tested-agent-skills.git ~/tested-agent-skills
@@ -25,11 +23,11 @@ For Claude Code, replace `--target codex` with `--target claude`. Restart the se
 
 [![Aggregate historical Claude-based evaluation results](docs/assets/evaluation-summary.svg)](docs/evaluation-summary.md)
 
-The chart reports historical Claude-based records only: **31 full-protocol wins**, **2 ties**, **1 limited comparison** and **1 not-applicable command** across 35 entries. It is aggregate evidence, not a score for every model or harness. Read the definitions and limits in [Evaluation evidence](docs/evaluation-summary.md).
+Historical comparisons on Claude models recorded **31 full-protocol wins**, **2 ties**, **1 limited comparison**, and **1 command outside the comparison protocol**. These counts describe skill evaluations. The [evaluation summary](docs/evaluation-summary.md) explains the scoring and sample limits.
 
 - **Skill** = knowledge (rules, diagnosis trees, playbooks, sources) that Claude Code discovers by topic; the full skill and then its references are loaded progressively.
-- **Agent** = a specialist that runs in a separate context and preloads one skill.
-- **Project rules win.** Every skill and agent reads the current project's `AGENTS.md` or `CLAUDE.md` first.
+- **Agent** = a specialist that runs in a separate context and can preload skills.
+- Follow your project's `AGENTS.md` or `CLAUDE.md` when using skills or agents.
 
 ## Works with
 
@@ -43,11 +41,7 @@ The skills are plain Markdown in the open [Agent Skills](https://agentskills.io)
 | Any other harness (OpenCode, Gemini CLI, Aider, your own) | Add the instructions shown below so it can find and read `SKILLS.md`; the harness must implement that behavior. |
 | Any model with no harness (DeepSeek, GPT, Gemini, Llama, a raw API) | `scripts/skill-to-prompt.py <skill>` prints a prompt to paste or send as the system message; it is not automatic skill loading. |
 
-What is tool-specific: the files in `agents/` use the Claude Code subagent format (frontmatter with `tools`, `model`, `skills`). In another tool, use an agent file as a role prompt.
-
-What was measured: the evals ran on Claude models. The skills are model-neutral text, but they have **not** been scored on other models or in every harness.
-
-For AI tools that support the emerging `llms.txt` convention, [llms.txt](llms.txt) provides a compact map to the right installation and harness guide. It improves discovery for compatible readers; it does not make a tool install or load skills automatically.
+The files in `agents/` use the Claude Code subagent format. For Codex or another tool, use a [portable role brief](agent-profiles/README.md). The [llms.txt index](llms.txt) links AI readers to the catalog, installation guides, and evaluation notes.
 
 ## What is inside
 
@@ -65,36 +59,20 @@ Each skill is a folder:
 - `SKILL.md`: when it applies and the core rules, about 8 to 9 KB.
 - `references/`: depth, loaded on demand (diagnosis playbook, playbooks, variants).
 - `references/BIBLIOGRAPHY.md`: every source, marked as read, identity checked or unverified.
-- The repository-level `evals/public/` contains synthetic fixtures for smoke tests. Historical full answers, task sets and holdouts stay outside the public release.
 
-`SKILLS.md` lists every skill with its description and path. [CATALOG.md](CATALOG.md) and `catalog/index.html` are the English-first discovery catalog.
+The [skill index](SKILLS.md) lists every skill and its path. The [catalog](CATALOG.md) adds historical evaluation status. [Public fixtures](evals/public/README.md) contain synthetic tasks for smoke tests.
 
 ## How it was tested
 
-- **With and without.** The same task is answered twice, once with the skill and once without, and a blind judge compares both orders. The aggregate historical record is 31 full-protocol wins, 2 ties, 1 limited comparison and 1 not-applicable command; `redigir` is a command with no standalone knowledge to compare.
+- **With and without.** The historical protocol compared responses with and without a skill. A blind judge saw the responses in both orders to reduce position bias.
 - **Trigger.** Historical checks examined when skills were selected and when they stayed inactive. Coverage varies; see [Evaluation evidence](docs/evaluation-summary.md).
 - **Agents.** A separate agent adds context and model calls, so cost depends on the task and harness. Only `code-reviewer` has been compared with its inline skill so far; other default agents were selected for their roles, not based on a comparative test.
 
-Public releases exclude the full historical benchmark runner and holdout tasks. They include an isolated synthetic Codex smoke adapter in `scripts/codex-skill-eval.py`. See [Evaluation methodology](docs/evaluation-methodology.md) and [Compatibility](docs/compatibility.md) for the boundaries.
-
-### Reproducing what is public
-
-Anyone can verify the install plan without changing their machine:
-
-```bash
-scripts/install.sh --dry-run --target agents --profile engineering
-```
-
-They can inspect the [aggregate evaluation record](docs/evaluation-summary.md), review the available synthetic fixtures, and turn a skill into a standalone prompt with `scripts/skill-to-prompt.py <skill>`. The historical blind benchmark is not independently reproducible from this repository; public results are evidence from the original Claude-based runs, not a cross-model benchmark.
+The [evaluation methodology](docs/evaluation-methodology.md) shows how to run the public Codex smoke fixture. The historical runner, holdout tasks, full answers, and personal configuration stay private. See the [security policy](SECURITY.md) for what the public release includes.
 
 ## Install
 
-Requirements: git, bash and python3. Node with `npx` for the agents that open a browser. macOS and Linux; on Windows use WSL.
-
-```bash
-git clone https://github.com/juliomachadome/tested-agent-skills.git ~/tested-agent-skills
-cd ~/tested-agent-skills
-```
+Run these commands from the clone created in [Quick start](#quick-start). The installer supports macOS, Linux, and Windows via WSL. Agents that open a browser also require Node.js with `npx`.
 
 ### Claude Code (skills and agents)
 

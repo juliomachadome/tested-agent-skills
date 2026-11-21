@@ -1,8 +1,8 @@
 # Tested Agent Skills
 
-> A portable collection of 35 Agent Skills and 26 Claude Code role definitions for marketing, business, engineering, design and data. Install only the needed skill folders; use the guide for the selected harness.
+> A collection that started in Claude Code and now includes 35 Agent Skills entries for Claude Code and Codex, alongside 26 native Claude Code subagents and matching portable role briefs.
 
-Skills are plain Markdown folders in the Agent Skills format. Claude Code supports the repository's native agent definitions. Other harnesses use the same skills plus portable role briefs where needed. Historical comparisons were run on Claude models; see the evaluation and compatibility documents for the scope of that evidence.
+Skills are Markdown folders in the Agent Skills format. The guides below show how to install the specific skills you need. See the evaluation summary for the historical Claude results.
 
 ## Start here
 

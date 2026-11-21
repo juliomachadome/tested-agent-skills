@@ -18,6 +18,11 @@ SPEC.loader.exec_module(PROFILES)
 
 
 class AgentProfileTests(unittest.TestCase):
+    def test_folded_agent_description_survives_profile_generation(self):
+        root = Path(__file__).resolve().parents[1]
+        media = next(agent for agent in PROFILES.read_agents(root / "agents") if agent["name"] == "media-producer")
+        self.assertIn("Production role for images, video, 3D, voice and music", PROFILES.render_profile(media))
+
     def test_all_claude_agents_receive_a_portable_profile(self):
         agents = PROFILES.read_agents(Path(__file__).resolve().parents[1] / "agents")
         self.assertEqual(26, len(agents))
