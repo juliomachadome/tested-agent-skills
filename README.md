@@ -8,6 +8,19 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Commer
 
 Skills for marketing, sales, product, engineering, design and data. Historical claims are backed by aggregate evidence and synthetic fixtures; raw answers and holdouts stay out of public releases.
 
+## Quick start
+
+Clone the repository, then preview and install the skill you need:
+
+```bash
+git clone https://github.com/juliomachadome/tested-agent-skills.git ~/tested-agent-skills
+cd ~/tested-agent-skills
+scripts/install.sh --dry-run --target codex --skill copywriting
+scripts/install.sh --target codex --skill copywriting
+```
+
+For Claude Code, replace `--target codex` with `--target claude`. Restart the session to discover the skill. See [Claude Code](docs/claude-code.md) and [Codex](docs/codex.md) for agents, profiles and project-specific use.
+
 ## Evidence at a glance
 
 [![Aggregate historical Claude-based evaluation results](docs/assets/evaluation-summary.svg)](docs/evaluation-summary.md)
@@ -52,7 +65,7 @@ Each skill is a folder:
 - `SKILL.md`: when it applies and the core rules, about 8 to 9 KB.
 - `references/`: depth, loaded on demand (diagnosis playbook, playbooks, variants).
 - `references/BIBLIOGRAPHY.md`: every source, marked as read, identity checked or unverified.
-- `evals/public/`: synthetic fixtures for safe smoke tests. Historical full answers, task sets and holdouts stay outside the public release.
+- The repository-level `evals/public/` contains synthetic fixtures for smoke tests. Historical full answers, task sets and holdouts stay outside the public release.
 
 `SKILLS.md` lists every skill with its description and path. [CATALOG.md](CATALOG.md) and `catalog/index.html` are the English-first discovery catalog.
 
@@ -93,11 +106,13 @@ This links all 35 skills into `~/.claude/skills/` and 8 of the 26 agents into `~
 
 See [Using the skills and agents with Claude Code](docs/claude-code.md) for focused installs, native agents, context controls, updates and safety boundaries.
 
-The other 18 agents install by name:
+To install an additional agent alongside the default set:
 
 ```bash
 scripts/install.sh --agent data-engineer,sales-rep
 ```
+
+For only the named agents, use `scripts/install.sh --profile none --agent data-engineer,sales-rep`. Install any skills those agents require separately; `--profile none` does not install them.
 
 Open a new session afterwards. Update with `git pull`; the links follow the repo.
 
@@ -149,7 +164,7 @@ scripts/install.sh --profile marketing,business   # several together
 scripts/install.sh --skill copywriting            # exactly one skill
 scripts/install.sh --skill copywriting,seo-geo    # a small custom set
 scripts/install.sh --profile marketing --skill process-improvement  # profile plus one extra
-scripts/install.sh --agent sales-rep              # an extra Claude Code agent, only when wanted
+scripts/install.sh --profile none --agent sales-rep # only this Claude Code agent
 ```
 
 Profiles are defined in `scripts/profiles.json`. Selecting fewer skills keeps the discovery list and potential context smaller. It is an installation and cost-control choice, **not** a permission boundary: the harness still decides which tools, files, network access and agent delegation are allowed. See [Loading, cost and safety boundaries](docs/loading-and-cost.md).

@@ -8,7 +8,7 @@
 #   agents:           skills -> ~/.agents/skills, the shared Agent Skills folder that Codex, Cursor and others read (AGENTS_HOME overrides)
 #   --profile all (default): every skill outside quarantine and default.skills_excluded, and the default agents. A profile from scripts/profiles.json links only its skills and
 #             agents; profiles combine with commas. Links outside the profile are left untouched unless --prune.
-#   --agent   also links these agents by name (repeatable or comma separated), e.g. --agent nextjs-architect.
+#   --agent   also links these agents by name (repeatable or comma separated). Without --profile or --skill, the default set is installed too; use --profile none for only agents.
 #   --skill   links only these skills when used alone; combine with --profile to add named skills to an area, e.g. --skill copywriting.
 #   --prune   removes links in the target folder that point into this repo but are not part of this install.
 #             With --dry-run it only lists them. Links to other places are never touched.
