@@ -1,6 +1,6 @@
 # Tested Agent Skills
 
-Tested Agent Skills started in Claude Code. It includes 35 Agent Skills entries for Claude Code and Codex, plus 26 native Claude Code subagents and matching portable role briefs. The collection covers marketing, sales, product, engineering, design, and data.
+Tested Agent Skills started in Claude Code. It includes 35 Agent Skills entries, 26 native Claude Code subagents, and matching portable role briefs. Codex can install the Markdown skills. Check the compatibility notes for entries written around Claude Code workflows.
 
 [Browse the skill catalog](CATALOG.md) · [Claude Code guide](docs/claude-code.md) · [Codex guide](docs/codex.md) · [Evaluation results](docs/evaluation-summary.md)
 
@@ -8,22 +8,36 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Commer
 
 ## Quick start
 
-With Git, Bash, and Python 3 installed, clone the repository and preview the installation of the copywriting skill for Codex.
+With Git, Bash, and Python 3 installed, clone the repository.
 
 ```bash
 git clone https://github.com/juliomachadome/tested-agent-skills.git ~/tested-agent-skills
 cd ~/tested-agent-skills
-scripts/install.sh --dry-run --target codex --skill copywriting
+```
+
+### Claude Code
+
+Preview with `scripts/install.sh --dry-run --target claude --skill copywriting`. To install the skill on this machine, run:
+
+```bash
+scripts/install.sh --target claude --skill copywriting
+```
+
+### Codex
+
+Preview with `scripts/install.sh --dry-run --target codex --skill copywriting`. To install the skill on this machine, run:
+
+```bash
 scripts/install.sh --target codex --skill copywriting
 ```
 
-For Claude Code, replace `--target codex` with `--target claude`. Restart the session to discover the skill. See [Claude Code](docs/claude-code.md) and [Codex](docs/codex.md) for agents, profiles and project-specific use.
+Open a new session after installation. The [Claude Code guide](docs/claude-code.md) covers native subagents, and the [Codex guide](docs/codex.md) covers portable role briefs.
 
 ## Evidence at a glance
 
 [![Aggregate historical Claude-based evaluation results](docs/assets/evaluation-summary.svg)](docs/evaluation-summary.md)
 
-Historical comparisons on Claude models recorded **31 full-protocol wins**, **2 ties**, **1 limited comparison**, and **1 command outside the comparison protocol**. These counts describe skill evaluations. The [evaluation summary](docs/evaluation-summary.md) explains the scoring and sample limits.
+Historical comparisons on Claude models recorded **31 wins**, **2 ties**, **1 limited comparison**, and **1 command outside the comparison protocol**. See the [classification rules](docs/evaluation-methodology.md#comparison-classification) and [sample limits](docs/evaluation-summary.md). The Codex smoke test checks session execution. Skill loading and answer quality require separate checks.
 
 - **Skill** = knowledge (rules, diagnosis trees, playbooks, sources) that Claude Code discovers by topic; the full skill and then its references are loaded progressively.
 - **Agent** = a specialist that runs in a separate context and can preload skills.
@@ -42,6 +56,8 @@ The skills are plain Markdown in the open [Agent Skills](https://agentskills.io)
 | Any model with no harness (DeepSeek, GPT, Gemini, Llama, a raw API) | `scripts/skill-to-prompt.py <skill>` prints a prompt to paste or send as the system message; it is not automatic skill loading. |
 
 The files in `agents/` use the Claude Code subagent format. For Codex or another tool, use a [portable role brief](agent-profiles/README.md). The [llms.txt index](llms.txt) links AI readers to the catalog, installation guides, and evaluation notes.
+
+Two catalog entries use Claude Code conventions: [`redigir`](skills/redigir/SKILL.md) collects a copywriting brief as a slash command, and [`agent-orchestration`](skills/agent-orchestration/SKILL.md) describes Claude Code delegation. Other tools may need adaptations for these workflows.
 
 ## What is inside
 
@@ -149,9 +165,15 @@ Profiles are defined in `scripts/profiles.json`. Selecting fewer skills keeps th
 
 ### Uninstall
 
+From the clone used to install the links, preview removal for the target you used.
+
 ```bash
-find ~/.claude/skills ~/.claude/agents ~/.agents/skills -maxdepth 1 -type l -lname '*tested-agent-skills/*' -print -delete
+scripts/install.sh --dry-run --target claude --profile none --prune
+scripts/install.sh --dry-run --target codex --profile none --prune
+scripts/install.sh --dry-run --target agents --profile none --prune
 ```
+
+Run the matching command without `--dry-run` to remove links pointing into that clone. The installer reads the same destination overrides as on install: `CLAUDE_HOME`, `CODEX_HOME` or `AGENTS_HOME`. Set the same override again if you used one. Any original files moved to a dated backup during installation can be restored from that backup manually.
 
 ## Skill or agent?
 

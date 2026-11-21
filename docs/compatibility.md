@@ -12,6 +12,8 @@ The skills are ordinary Markdown folders with a `SKILL.md`. That makes their kno
 | Cursor and other Agent Skills readers | Format-compatible | Harness-dependent | No integration claim | Check that product's documented discovery folder. |
 | Raw model API or chat | Manual prompt export | Manual role prompt | No automatic discovery or evaluation claim | Use `scripts/skill-to-prompt.py`. |
 
+The Markdown files can be installed in Codex. Applying the workflows in [`redigir`](../skills/redigir/SKILL.md) and [`agent-orchestration`](../skills/agent-orchestration/SKILL.md) requires adapting the Claude Code command and delegation conventions respectively.
+
 ## Portable skills
 
 A skill can be copied into a compatible discovery folder or converted to a system/context prompt:
