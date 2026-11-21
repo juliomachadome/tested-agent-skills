@@ -93,15 +93,17 @@ Neighbours: `offers`, `growth-analytics` (sample size, test reading), `seo-geo`,
 1. Project first (0), diagnosis (1) and voice-of-customer phrases; pick the tone (`references/tones/README.md`).
 2. Draft headline, subhead and CTA first; they must sell alone. Body by section 3; cut half, then again.
 3. Final pass: truth of every claim, cut, AI tells, read aloud, legal check (`references/playbooks.md` 7).
-4. Deliver with annotations and test variants. For a failing page, run `references/diagnosis-playbook.md` before rewriting.
+4. Deliver the requested copy. Include variants when the user requests alternatives or is planning a copy test. For a failing page, run `references/diagnosis-playbook.md` before rewriting.
 
 ## 6. Output format
+
+For a request for one piece, deliver one ready-to-use draft with one primary action. Keep the diagnosis and checklist as working steps. Add a short note only when requested or when missing evidence changes what can safely be published. For a review or test brief, use the relevant parts of this format:
 
 ```
 Diagnosis (4 lines) + tone chosen (and why)
 Copy by section: headline · subhead · CTA (+ support line) · sections
 Why: one line per key choice, with the principle used
-Variants: 2-3 headlines and CTAs, each with the hypothesis it tests
+Variants (when requested or testing): 2-3 headlines or CTAs, each with the hypothesis it tests
 Claims log: each number or promise -> source, or "needs proof"
 Legal flags [EU] and open questions; what was not verified
 (Other language: each passage with a faithful translation beside it)
