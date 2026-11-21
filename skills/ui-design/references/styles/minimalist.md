@@ -30,6 +30,8 @@ Use this pass when the brief calls for a minimalist or restrained direction. Sta
 
 Inspect the first view at the relevant phone, tablet and desktop widths before adding motion. The visitor should know where they are, what matters first and how to proceed. Remove an eyebrow, subtitle, badge or container if removing it leaves the same facts, choices and next action. Keep prices, material terms, control labels, visible focus and error recovery where users need them. In dense tools, keep useful rows and aligned values; use restraint in decoration to make room for information.
 
+Review the entire page and name what each section adds. When a mockup and the working demo show the same information, use the live surface where it fits or reduce the mockup to a useful orientation cue. Keep a separate preview when it describes a different result, such as the exported file, or when the brief requires it. Apply the same check to benefit sections and captions. A primary action can repeat at a new decision point, such as the end of a long page. Preserve required sections, labels and states.
+
 Compare before and after in the same state and viewport. Record the surplus removed, the useful information retained and one visible detail that carries the project's identity. Review comprehension separately from appearance.
 
 ## Accessibility risks
