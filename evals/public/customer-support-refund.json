@@ -1,0 +1,8 @@
+{
+  "id": "support-duplicate-charge-v1",
+  "skill": "customer-support",
+  "prompt": "Reply to a customer who reports paying twice for one €20 order. The support timeline confirms one settled payment and one pending authorization for the same order. Team policy: a pending authorization is not refundable; escalate to billing if both entries settle. No release timeline has been confirmed. Do not ask for payment details. Return only JSON. Fields: disposition (explain_pending, refund_pending, or escalate_now), refundable_now (boolean), escalate_if_both_settle (boolean), and reply (brief customer-facing text).",
+  "expected_output": "Structured disposition plus a customer-facing reply. Review the reply separately for clarity, unsupported promises and safe handling of payment data.",
+  "assertions": ["Do not refund the authorization.", "Explain the pending authorization.", "Escalation is conditional on both entries settling."],
+  "expected_fields": {"disposition": "explain_pending", "refundable_now": false, "escalate_if_both_settle": true}
+}

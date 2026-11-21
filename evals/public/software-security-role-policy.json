@@ -1,0 +1,8 @@
+{
+  "id": "security-workspace-policy-v1",
+  "skill": "software-security",
+  "prompt": "Define the access decisions for a fictional notes product. A note belongs to one workspace. Active members may read; active editors may edit; only active owners may invite. Membership is checked separately for every workspace and grants no access after revocation. Return only JSON describing this defensive policy. Fields: editor_edit_same_workspace, editor_edit_other_workspace, revoked_member_read, viewer_invite, and enforce_on_server, all booleans. No code or attack steps.",
+  "expected_output": "Boolean policy decisions for the listed cases.",
+  "assertions": ["Allow the legitimate edit.", "Deny cross-workspace edits, revoked members and viewer invites.", "Specify server-side enforcement."],
+  "expected_fields": {"editor_edit_same_workspace": true, "editor_edit_other_workspace": false, "revoked_member_read": false, "viewer_invite": false, "enforce_on_server": true}
+}
