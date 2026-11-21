@@ -67,9 +67,9 @@ Missing data: ask the minimum or state the assumption. Know what the reader saw 
 
 Say what you chose and why in one line (audience, offer, platform, data); a choice without a reason is removed.
 
-## 3. Page structure that rarely fails
+## 3. Page structure by reader need
 
-Promise (specific) → proof it is real → mechanism → what is inside → verifiable social proof → offer and price → guarantee and what happens after paying → FAQ with real objections → button. [M] A value proposition: headline, 1-2 line subhead (for whom, how), three fact-backed bullets, real product image in use.
+Open with the product, intended reader and next action. Put proof or a working example where it supports a decision. Add mechanism, offer details, terms, evidence and FAQ when the reader needs them and the brief supports them. Check the full page and remove a section if it only rephrases a benefit the reader has already seen. Repeat the same action label where a reader may be ready to act, and preserve material conditions alongside the action. [M]
 
 AIDA, PAS and relatives are scaffolding; none is proven better [F]. Order by awareness: `references/playbooks.md` 3.
 
@@ -91,7 +91,7 @@ Neighbours: `offers`, `growth-analytics` (sample size, test reading), `seo-geo`,
 
 ## 5. Workflow
 1. Project first (0), diagnosis (1) and voice-of-customer phrases; pick the tone (`references/tones/README.md`).
-2. Draft headline, subhead and CTA first; they must sell alone. Body by section 3; cut half, then again.
+2. Draft the headline, subhead and CTA. Check whether the text names the product, the intended reader and what the CTA does. Give each section a distinct question to answer.
 3. Final pass: truth of every claim, cut, AI tells, read aloud, legal check (`references/playbooks.md` 7).
 4. Deliver the requested copy. Include variants when the user requests alternatives or is planning a copy test. For a failing page, run `references/diagnosis-playbook.md` before rewriting.
 

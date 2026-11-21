@@ -68,7 +68,7 @@ Evidence tags in the references: [C] consensus or standard, [M] single or correl
 4. Name dangerous actions and choose Undo or confirm for each.
 5. Run the checklist and the without-reading test on the mock or build; hand styling to `ui-design`.
 
-A passing flow is the starting point. Compare how many steps and scrolls it takes to find the next action, how much data must be re-entered, and whether someone can recover without help. Report observations separately from visual preference.
+Start at the same entry point, viewport and data state. For a demo or first-use flow, distinguish reaching it from completing the first meaningful action. Record the first relevant control, actions and scrolling needed to get there, feedback after acting, and the way to recover or undo. Check representative touch and keyboard paths. Measure time or discoverability with unfamiliar participants when making claims about users. Compare functional results separately from visual preference.
 
 **Reviewing**
 1. Capture each relevant state at about 390 px and 1280 px; do a keyboard-only pass, 200 percent zoom and 320 px reflow.

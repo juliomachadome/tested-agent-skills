@@ -37,7 +37,7 @@ Choose the starting layout from the primary use case. Start narrow when quick ph
 
 Remove boilerplate subtitles, repeated badges, nested panels and decoration whose absence would not change a decision or action. Start with alignment, type and spacing; add borders, fills or elevation only where they clarify grouping or interaction.
 
-For product pages, check that each section advances a distinct reader decision. When a working demo already explains the product, consider using it as the main product visual. A separate preview earns its space when it explains a different output, helps people understand a dense interface, or serves a required section.
+For product pages, check each section against the reader’s next decision. Use a working demo as the main visual when it explains the product and fits the layout. See the [whole-page review](references/styles/minimalist.md#first-view-and-subtraction-pass-f) for deciding when a preview or section has a separate job.
 
 ## Principles
 1. **System before screen.** Scales for type, space, color, radius, elevation and motion are decided once as tokens; screens only pick from them.

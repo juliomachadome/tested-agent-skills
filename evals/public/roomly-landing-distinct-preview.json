@@ -1,0 +1,11 @@
+{
+  "id": "roomly-landing-distinct-preview-v1",
+  "skill": "ui-design",
+  "prompt": "Cria uma landing em português pra Roomly, uma ferramenta fictícia que organiza reservas de salas para pequenos coworkings. Quero testar a escolha de um horário, trocar para outro e cancelar a reserva simulada. Mostra também como fica a confirmação que a recepção envia ao visitante, com sala, hora e instruções de chegada. Entrega um HTML que eu consiga abrir direto.",
+  "expected_output": "A standalone Portuguese landing with a reversible reservation demo and an example confirmation for a visitor.",
+  "assertions": [
+    "The user can select a time, change it and cancel in the demo.",
+    "A visitor can inspect a confirmation that shows the room, time and arrival instructions.",
+    "Review whether the confirmation adds information and whether the demo remains easy to reach."
+  ]
+}
