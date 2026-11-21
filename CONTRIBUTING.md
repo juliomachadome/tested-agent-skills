@@ -72,12 +72,9 @@ Run the checks relevant to your change before opening a PR:
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/check-public-safety.py .
-python3 scripts/build-evaluation-summary.py
-python3 scripts/build-public-catalog.py
-python3 scripts/build-agent-profiles.py
 ```
 
-Do not commit an accidental change to generated output. If you intentionally change an input to a generator, include the regenerated output in the same PR.
+Run `python3 scripts/build-agent-profiles.py` when changing an agent definition or the profile generator. Do not commit an accidental change to generated output. If you intentionally change an input to a generator, include the regenerated output in the same PR.
 
 ## Pull request checklist
 
