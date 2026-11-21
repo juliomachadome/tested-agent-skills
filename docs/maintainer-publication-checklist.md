@@ -1,13 +1,13 @@
-# Maintainer checklist for the future public repository
+# Maintainer checklist for the public repository
 
-This checklist is for the owner/admin when the filtered export becomes its own public repository. It is not a permission grant to contributors.
+This checklist is for the owner/admin of the public repository. It is not a permission grant to contributors.
 
-## Before making it public
+## Before each public release
 
 - [ ] Generate a fresh export with `scripts/export-public-release.py`.
 - [ ] Review the export and run `python3 scripts/check-public-safety.py <export-directory>`.
 - [ ] Confirm no `.git` history, raw answers, holdouts, local paths or historical PT-BR catalog source files entered the export.
-- [ ] Create a new repository from the inspected export; do not change the working repository's visibility.
+- [ ] Publish only from the inspected export or an already-public release branch; keep the private working history separate.
 - [ ] Set the description, topics, license and social-preview image in the repository's About settings.
 
 ## Security and quality settings
