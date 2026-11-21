@@ -27,9 +27,14 @@ class PublicDocsTests(unittest.TestCase):
     def test_llms_index_points_to_install_and_harness_guides(self):
         index = (ROOT / "llms.txt").read_text(encoding="utf-8")
         self.assertTrue(index.startswith("# Tested Agent Skills\n"))
-        self.assertIn("[Claude Code guide](docs/claude-code.md)", index)
-        self.assertIn("[Codex guide](docs/codex.md)", index)
-        self.assertIn("[Installation script](scripts/install.sh)", index)
+        base = "https://raw.githubusercontent.com/juliomachadome/tested-agent-skills/main/"
+        links = dict(re.findall(r"\[([^\]]+)\]\(([^)]+)\)", index))
+        self.assertEqual(links["Claude Code guide"], base + "docs/claude-code.md")
+        self.assertEqual(links["Codex guide"], base + "docs/codex.md")
+        self.assertEqual(links["Installation script"], base + "scripts/install.sh")
+        for url in links.values():
+            self.assertTrue(url.startswith(base), url)
+            self.assertTrue((ROOT / url.removeprefix(base)).is_file(), url)
 
     def test_evaluation_summary_does_not_expose_portuguese_status_labels(self):
         summary = (ROOT / "docs" / "evaluation-summary.md").read_text(encoding="utf-8").lower()

@@ -2,7 +2,15 @@
 
 ## What the historical results measure
 
-The historical records compare a response produced with one skill against a response produced without repository skills for the same task. A blind judge sees the alternatives in both orders to reduce position bias. A win is recorded only when the judging process selects the skill-assisted response under its recorded rule; a tie is not treated as improvement.
+The historical records compare one answer with the target skill against an answer to the same task without repository skills. A blind judge sees the alternatives in both orders to reduce position bias.
+
+### Comparison classification
+
+For the main holdout protocol, each skill started with two tasks and one paired comparison per task. Two wins or two losses ended the comparison early. Other results led to two more comparisons per task, for six paired judgments in total. The judge had to agree across both orders. A second Claude judge adjudicated disagreements in that protocol. An unresolved pair counted as a tie.
+
+The main holdout counted a skill as a win when its pairs contained more wins than losses. Equal counts were a tie. The public totals include 25 main holdout outcomes, 7 reused outcomes from an earlier holdout, and 1 outcome from a separate pilot. Those earlier runs had different procedures, so the README and catalog call the combined counts historical wins and ties.
+
+The shorter `web-motion` check is counted separately as a limited comparison. The `redigir` command is outside this comparison protocol.
 
 Separate trigger checks ask whether a skill is selected when it should be and stays inactive when it should not. The aggregate report calls a trigger record **strong** only when it has at least four correct triggers, zero false triggers and three runs. Other recorded trigger tests are **limited**; an entry without a trigger record is **pending**.
 

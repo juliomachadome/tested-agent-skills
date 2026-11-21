@@ -47,13 +47,21 @@ python3 scripts/role-to-prompt.py --list
 
 ## Safety and cost boundaries
 
-A role brief changes task instructions only. Permissions, connectors, approvals and model budgets remain configured in Codex and the project. For a synthetic verification of one installed skill, use:
+A role brief changes task instructions only. Permissions, connectors, approvals and model budgets remain configured in Codex and the project.
+
+## Run the synthetic smoke test
+
+The adapter copies a skill from the checkout into a temporary project. The default run previews setup and command options.
 
 ```bash
 python3 scripts/codex-skill-eval.py --fixture evals/public/codex-smoke.json
 ```
 
-The command defaults to a dry run. Its `--live` option invokes a model and may incur provider charges; it uses an ephemeral, read-only session that ignores normal user configuration.
+The `--live` option invokes Codex in an ephemeral, read-only session that ignores normal user configuration. It may incur provider charges. The report records session events and process exit. Verifying skill loading or scoring answer quality requires a separate test.
+
+## Uninstall
+
+Use the [README removal commands](../README.md#uninstall) with the target and destination you used when installing.
 
 ## What is and is not proven
 

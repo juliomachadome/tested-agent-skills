@@ -13,7 +13,7 @@ This page aggregates the repository's historical **Claude-based** evaluation rec
 | Skills tracked | 35 | Skills included in the historical aggregate. |
 | Skill beat no-skill baseline | 31 | Historical blind comparison recorded a win. |
 | Tie with no-skill baseline | 2 | Historical blind comparison recorded a tie; it is not evidence of improvement. |
-| Limited comparison | 1 | A historical with/without check exists, but it did not meet the full repeated protocol. |
+| Limited comparison | 1 | A quick with/without check is recorded separately from the main set of outcomes. |
 | Comparison pending | 0 | A skill has no completed historical with/without outcome. |
 | Comparison not applicable | 1 | A command/entry has no standalone knowledge comparison. |
 | Trigger checks recorded | 34 | At least one trigger check exists. |
@@ -23,7 +23,7 @@ This page aggregates the repository's historical **Claude-based** evaluation rec
 
 ### Open or non-applicable entries
 
-- **`web-motion`: limited comparison.** Its quick historical test reports three task wins with one execution per task; it has not yet met the full repeated comparison protocol. Its trigger record is also limited (3/5 expected triggers, one run per phrase).
+- **`web-motion`: limited comparison.** Its quick historical test reports three task wins with one execution per task. Its trigger record is also limited (3/5 expected triggers, one run per phrase).
 - **`redigir`: comparison not applicable.** It is a guided command for collecting a copywriting brief, rather than a standalone knowledge skill, so the normal "with skill versus without skill" comparison is not meaningful.
 
 ## How to read this
@@ -32,4 +32,4 @@ This page aggregates the repository's historical **Claude-based** evaluation rec
 - **Coverage is incomplete.** The historical records are small and some outcomes are pending. A skill can be portable Markdown while its evaluation is only Claude-specific.
 - **Public reproduction uses synthetic inputs.** The exact private holdout is deliberately unavailable; users should run the public fixtures or their own non-sensitive evaluation set and report the exact model, harness, command and date.
 
-See [evaluation methodology](evaluation-methodology.md) for boundaries and [compatibility](compatibility.md) for what is actually supported.
+See the [comparison classification](evaluation-methodology.md#comparison-classification) and [compatibility guide](compatibility.md).

@@ -74,13 +74,13 @@ The installation uses links, so updating the local clone updates what future Cla
 git pull
 ```
 
-To preview removal of this repository's links, use:
+To preview removal of all links pointing to the current clone, run:
 
 ```bash
-scripts/install.sh --dry-run --prune --profile marketing
+scripts/install.sh --dry-run --target claude --profile none --prune
 ```
 
-The command touches only links that point into this repository. It leaves standalone files and links to other locations alone.
+Remove `--dry-run` to unlink the displayed paths. Use the same `CLAUDE_HOME` override as on install if you set one. To keep the marketing profile and remove links outside it, use `--profile marketing` instead of `--profile none`.
 
 ## Safety and evidence
 
