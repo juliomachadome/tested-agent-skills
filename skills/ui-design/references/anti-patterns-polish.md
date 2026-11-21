@@ -28,7 +28,9 @@ These recur in generated and templated UI. They are defaults, not crimes: use on
 
 
 ## 1b. Craft pass before delivering (what top-tier product shots do) [F]
-Field reference: the best checkout, onboarding and dashboard shots on Dribbble and Mobbin and in shipped apps (Stripe, Linear, Revolut, Duolingo, Airbnb). Restated patterns, not copied:
+For visual references, use Dribbble or editorial work to study composition, type and rhythm. Use Mobbin and shipped products to study task order and states. Inspect a working flow where possible when behavior matters. A shot can illustrate a visual choice. Verify keyboard, errors, real content and responsive behavior in your implementation. Write down the relevant choice and adapt it to the project's content, brand and users.
+
+Apply these patterns where they fit the screen's job:
 - A point of view: pick one base style from `styles/README.md` by product and audience and say which; a language app can lean `playful` (rounded, warm, one bright brand colour, a mascot or illustration moment) while money screens stay calm.
 - Brand presence without decoration: a real logo mark or product image, a brand colour used for the primary action and one highlight only, warm or tinted neutrals instead of pure grey-on-white.
 - Strong type scale: a clear display size for the screen goal and the price, tabular numbers for money, at most 3 weights; labels quieter than values.
