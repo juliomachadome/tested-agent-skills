@@ -1,0 +1,7 @@
+{
+  "id": "shiftfern-landing-ui-v2",
+  "skill": "ui-design",
+  "prompt": "Crie uma landing page completa em português para a ShiftFern, um produto fictício de escalas semanais para cafés independentes. Os modelos semanais podem ser reutilizados e a escala pode ser exportada em PDF. A página deve apresentar a proposta e uma amostra de escala logo na abertura, explicar como montar e reaproveitar a escala, oferecer uma demo que permita salvar um de três modelos fictícios, encontrá-lo nos salvos e removê-lo, mostrar um exemplo do resultado em PDF, responder pelo menos três perguntas frequentes e terminar com uma chamada para experimentar a demo e um rodapé. Quero um visual minimalista com identidade própria. Não invente preços, depoimentos, métricas ou resultados. Entregue um único HTML autônomo, responsivo, com CSS e JavaScript embutidos e sem dependências externas. Retorne somente o HTML.",
+  "expected_output": "A complete, self-contained Portuguese landing with a sample schedule, workflow, interactive demo, PDF example, FAQ, final CTA, and footer.",
+  "assertions": ["Check the complete landing scope and all documented interactions in the browser before reviewing visual quality."]
+}

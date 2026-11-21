@@ -1,5 +1,7 @@
 # ShiftFern landing page evaluation
 
+[Follow-up pairs using short and detailed briefs](shiftfern-landing-rounds.md)
+
 [Public fixture](../../evals/public/shiftfern-landing-ui.json) · [Earlier inventory and checkout comparisons](https://github.com/juliomachadome/tested-agent-skills/issues/7#issuecomment-7065318353)
 
 | Version | Status | Evidence |

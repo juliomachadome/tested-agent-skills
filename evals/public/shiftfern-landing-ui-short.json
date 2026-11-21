@@ -1,0 +1,7 @@
+{
+  "id": "shiftfern-landing-ui-short-v1",
+  "skill": "ui-design",
+  "prompt": "Cria uma landing em português pra ShiftFern. É um app de escalas semanais pra cafés independentes, com modelos reutilizáveis e exportação em PDF. Quero que dê pra experimentar os modelos na própria página. Entrega um HTML que eu consiga abrir direto.",
+  "expected_output": "A Portuguese landing for the fictional ShiftFern with a useful on-page demo.",
+  "assertions": ["Review how each implementation answers the brief and what useful decisions it adds without detailed design instructions. Score visual and functional observations separately."]
+}
