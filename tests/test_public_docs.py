@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -39,6 +40,12 @@ class PublicDocsTests(unittest.TestCase):
         guide = (ROOT / "docs" / "codex.md").read_text(encoding="utf-8").lower()
         self.assertIn("role-to-prompt.py", guide)
         self.assertNotIn("fake native", guide)
+
+    def test_contributing_only_lists_available_python_checks(self):
+        contributing = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
+        commands = re.findall(r"python3 (scripts/[a-z0-9-]+\.py)", contributing)
+        missing = [command for command in commands if not (ROOT / command).is_file()]
+        self.assertEqual(missing, [])
 
 
 if __name__ == "__main__":

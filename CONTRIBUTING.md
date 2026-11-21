@@ -72,10 +72,9 @@ Run the checks relevant to your change before opening a PR:
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/check-public-safety.py .
-python3 scripts/build-agent-profiles.py
 ```
 
-The public checkout does not include the historical catalog and evaluation-summary generators or their private inputs. Propose corrections to those published summaries in a PR; a maintainer will verify and regenerate them in the private working repository. The agent-profile generator is available publicly: if an agent definition changes, include its regenerated profile in the same PR.
+Run `python3 scripts/build-agent-profiles.py` when changing an agent definition or the profile generator, and include the regenerated profiles in the same PR. The public checkout does not include the historical catalog and evaluation-summary generators or their private inputs. Propose corrections to those published summaries in a PR; a maintainer will verify and regenerate them in the private working repository.
 
 ## Pull request checklist
 
