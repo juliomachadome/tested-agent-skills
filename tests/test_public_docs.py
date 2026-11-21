@@ -53,5 +53,12 @@ class PublicDocsTests(unittest.TestCase):
         self.assertEqual(missing, [])
 
 
+    def test_evaluation_matrix_covers_each_public_skill_once(self):
+        matrix = (ROOT / "docs" / "skill-evaluation-matrix.md").read_text(encoding="utf-8")
+        rows = re.findall(r"^\| `([a-z0-9-]+)` \|(?:[^|\n]*\|){4}$", matrix, re.MULTILINE)
+        public_skills = [file.parent.name for file in (ROOT / "skills").glob("*/SKILL.md")]
+        self.assertCountEqual(rows, public_skills)
+
+
 if __name__ == "__main__":
     unittest.main()
