@@ -31,7 +31,7 @@ New public-facing material must be in clear English. It must distinguish verifie
 
 Use synthetic, non-sensitive fixtures for anything intended to be public. Record the exact harness, model, skill revision, tools, isolation settings, date, evaluation rule, and outcome. Do not add raw private answers or private holdouts. A result is specific to its model/harness pair unless independently measured elsewhere.
 
-For a skill change that claims better output, run the same synthetic prompt twice on the same model/harness: once without the skill and once with the proposed revision. Compare both outputs against a declared rubric or deterministic assertions. For a trigger change, include both prompts that should load the skill and near-miss prompts that should not. One successful example is a smoke test, not a quality claim; report the run count and any tie, loss or inconclusive result.
+For a skill change that claims better output, compare the same synthetic tasks with and without the proposed skill on the same model and harness, using a rubric or assertions defined before inspecting the outputs. Repeat where practical, report all runs and ties, losses and inconclusive results, and describe how the outputs were judged. A single pair is exploratory evidence, not proof of a general improvement. For a trigger change, include prompts that should load the skill and near-miss prompts that should not.
 
 ### Test another harness or model
 
@@ -72,12 +72,10 @@ Run the checks relevant to your change before opening a PR:
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/check-public-safety.py .
-python3 scripts/build-evaluation-summary.py
-python3 scripts/build-public-catalog.py
 python3 scripts/build-agent-profiles.py
 ```
 
-Do not commit an accidental change to generated output. If you intentionally change an input to a generator, include the regenerated output in the same PR.
+The public checkout does not include the historical catalog and evaluation-summary generators or their private inputs. Propose corrections to those published summaries in a PR; a maintainer will verify and regenerate them in the private working repository. The agent-profile generator is available publicly: if an agent definition changes, include its regenerated profile in the same PR.
 
 ## Pull request checklist
 
