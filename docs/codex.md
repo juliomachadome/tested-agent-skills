@@ -1,5 +1,11 @@
 # Using the skills and roles with Codex
 
+## Optional development workflow: Superpowers
+
+[Superpowers](https://github.com/obra/superpowers#installation) is an independent plugin for planning, debugging, test-driven development and review. Install it only if that workflow fits the work. In the Codex app, look under **Plugins** for **Superpowers**; in the CLI, use `/plugins` to find it. The enabled plugin can select workflows automatically. Use it for a substantial change, difficult bug or structured review. For a quick edit or a controlled comparison, start a fresh session without it. The CLI option `codex --disable plugins` disables all plugins for that invocation; it does not remove separately installed skills.
+
+This repository's installer does not install Superpowers or add a `/superpowers` command. Keep it out of both evaluation arms unless the experiment explicitly measures that plugin.
+
 ## Install the smallest useful set
 
 For a person or project that needs one area, install only those skill folders:
