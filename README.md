@@ -59,8 +59,8 @@ Each skill is a folder:
 ## How it was tested
 
 - **With and without.** The same task is answered twice, once with the skill and once without, and a blind judge compares both orders. The aggregate historical record is 31 full-protocol wins, 2 ties, 1 limited comparison and 1 not-applicable command; `redigir` is a command with no standalone knowledge to compare.
-- **Trigger.** Each skill is checked for firing on the questions it should and staying quiet on the ones it should not: `evals/trigger-results.json`.
-- **Agents.** An agent costs about twice the skill alone, so only agents with a reason to run in a separate context are installed by default. Only `code-reviewer` has been compared with its inline skill so far; the other default agents are there because of how they are used, not because of a test.
+- **Trigger.** Historical checks examined when skills were selected and when they stayed inactive. Coverage varies; see [Evaluation evidence](docs/evaluation-summary.md).
+- **Agents.** A separate agent adds context and model calls, so cost depends on the task and harness. Only `code-reviewer` has been compared with its inline skill so far; other default agents were selected for their roles, not based on a comparative test.
 
 Public releases exclude the full historical benchmark runner and holdout tasks. They include an isolated synthetic Codex smoke adapter in `scripts/codex-skill-eval.py`. See [Evaluation methodology](docs/evaluation-methodology.md) and [Compatibility](docs/compatibility.md) for the boundaries.
 
