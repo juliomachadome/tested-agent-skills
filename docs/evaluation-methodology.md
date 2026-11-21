@@ -1,5 +1,7 @@
 # Evaluation methodology
 
+The [evaluation matrix by skill](skill-evaluation-matrix.md) proposes public test cases and quality criteria for all 35 catalog entries.
+
 ## What the historical results measure
 
 The historical records compare one answer with the target skill against an answer to the same task without repository skills. A blind judge sees the alternatives in both orders to reduce position bias.
