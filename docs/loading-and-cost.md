@@ -25,7 +25,7 @@ scripts/install.sh --profile marketing
 scripts/install.sh --profile marketing --skill process-improvement
 
 # An optional Claude Code specialist is installed only by name.
-scripts/install.sh --agent sales-rep
+scripts/install.sh --profile none --agent sales-rep
 ```
 
 Use `--dry-run` first to see the planned links without changing the machine. A focused installation lowers the number of available descriptions and reduces accidental or irrelevant discovery. It is useful for clarity and potential context cost; it is not isolation.

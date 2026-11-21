@@ -43,12 +43,14 @@ fullstack-engineer
 nextjs-architect
 ```
 
-Install any of the other roles only when a task needs it:
+Install named roles without adding the default set:
 
 ```bash
-scripts/install.sh --agent sales-rep
-scripts/install.sh --agent data-engineer,finance-analyst
+scripts/install.sh --profile none --agent sales-rep
+scripts/install.sh --profile none --agent data-engineer,finance-analyst
 ```
+
+This installs only the agent definitions, not their skills. Install the relevant skills separately with `--skill`. Without `--profile none` or `--skill`, `--agent` adds the named agents to the default installation.
 
 Each native agent declares its own skill, model and available Claude Code tools. The role descriptions define what the agent should do; Claude Code still enforces the permissions, approvals and tool availability of the current session.
 

@@ -50,6 +50,18 @@ class InstallSelectionTests(unittest.TestCase):
         self.assertIn("Claude Code only", result.stderr)
         self.assertIn("role-to-prompt.py", result.stderr)
 
+    def test_only_agent_with_explicit_empty_profile(self):
+        with tempfile.TemporaryDirectory() as home:
+            env = os.environ | {"CLAUDE_HOME": str(Path(home) / ".claude")}
+            result = subprocess.run(
+                [str(INSTALL), "--target", "claude", "--profile", "none", "--agent", "sales-rep"],
+                cwd=ROOT, env=env, text=True, capture_output=True, check=False,
+            )
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertTrue((Path(home) / ".claude/agents/sales-rep.md").is_symlink())
+            self.assertEqual([], list((Path(home) / ".claude/skills").iterdir()))
+            self.assertEqual(["sales-rep.md"], [p.name for p in (Path(home) / ".claude/agents").iterdir()])
+
 
 if __name__ == "__main__":
     unittest.main()
