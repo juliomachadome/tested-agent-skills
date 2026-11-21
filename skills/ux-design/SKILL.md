@@ -44,7 +44,7 @@ AI tells to avoid (while reviewing or designing): generic heuristic lists not ti
 | AI output on screen: citations, confidence, abstention, drafts, streaming | `references/ai-features-ux.md` and `product-types/ai-assistant-chat.md` |
 | Running a review, finding format, per-screen checklist, mobile vs desktop, habit ethics | `references/review-method.md` |
 | Recurring defects (28 anti-patterns) | `references/real-screen-lessons.md` |
-| The without-reading test, script, pass/fail | `references/understand-without-reading.md` |
+| Hierarchy without reading, unfamiliar-language flow walkthrough, script and criteria | `references/understand-without-reading.md` |
 | A tour, spotlight or first-run hint is proposed | `references/guided-tours.md` |
 | Source, edition, read date, V/P status | `references/BIBLIOGRAPHY.md` |
 

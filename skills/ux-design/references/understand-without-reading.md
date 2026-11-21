@@ -7,7 +7,8 @@
 4. Judging the screenshot
 5. Pass/fail criteria
 6. Limits and pitfalls
-7. Sources
+7. Walk through a flow in an unfamiliar language
+8. Sources
 
 ## 1. What it proves and why
 Layout, shape, weight, position and color should carry the structure of a screen before a single word is read. Pre-attentive cues (size, contrast, grouping) and Gestalt grouping (proximity, common region, similarity) are processed before reading, and people scan more than they read. If a screen only makes sense through its words, it also fails people who do not read the language well, read fast, read under stress, use translation, or rely on grayscale or low vision. The test is a heuristic: it finds weak hierarchy and state-by-color-only. It does not replace tests with real people and cannot judge the quality of the words.
@@ -94,7 +95,15 @@ Run it after driving the page to the state under test (login, click, wait for da
 
 Use intact copy in a separate check for a public landing page or important task state. Ask a reviewer unfamiliar with the screen what it offers, what happens next and where they would click or tap. For an error state, ask them to identify the correction and complete it without re-entering unaffected fields. Compare at the same viewport and starting state. Note redundant explanations separately from wording that communicates a price, condition, choice or way out. A short inspection is a diagnostic proxy; claims about how users actually complete the task need observation with users.
 
-## 7. Sources
+## 7. Walk through a flow in an unfamiliar language
+
+Use an actual localized preview in a language the participant does not understand. Keep the labels in place, use synthetic data and pick a reversible task the person has never seen. Give the goal in a language they understand without naming controls or pointing at the screen. For example, ask them to add an item to a saved list, find it again and remove it. Run this at the viewport and input method you are reviewing.
+
+Before the session, identify the intended entry point, action feedback, completion cue and safe recovery step. Observe the first meaningful action, wrong turns, requests for help and whether the person recognizes when they are done. Include a recoverable mistake where relevant. A useful signal is that someone navigates to the right place, understands a change occurred and can recover without being shown the path. Record where the flow needed a guess. Use people unfamiliar with the screen before claiming that users can do this. Keep the scrambled screenshot above as a faster hierarchy check. Its script mutates page content and input values, so use the localized preview for interaction.
+
+Check names, warnings, amounts, permissions and consequences in the person's own language. Use the unfamiliar-language walkthrough for navigation and feedback. Evaluate any consequential action up to its confirmation screen in a safe preview, then verify informed confirmation separately. Preserve visible labels and accessible names.
+
+## 8. Sources
 - Gestalt grouping principles and Von Restorff effect: https://lawsofux.com/ (read 2026-11-15)
 - WCAG 1.4.1 Use of Color: https://www.w3.org/TR/WCAG22/ (referenced; level A)
 - NN/g on scanning behavior: https://www.nngroup.com/articles/how-users-read-on-the-web/ (not re-verified)
