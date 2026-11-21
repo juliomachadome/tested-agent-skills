@@ -52,7 +52,7 @@ Historical comparison: **win**. Trigger record: 4/5 expected, 0/5 false, 3 run(s
 
 ### customer-support
 
->-
+Customer support - invoke this skill FIRST, before answering, for any support question, even a short one - replies to customers (angry, refund, cancellation, outage), macros, help-center and how-to articles ("write a help article for resetting a password"), refund or cancellation requests ("customer wants a refund 40 days after buying, what do I answer"), ticket triage and severity, SLAs, escalation to engineering with reproducible bug reports, deflection versus human care, diagnosing support metrics (CSAT falling, backlog, reopens, repeat contacts, bot "resolved" but customers giving up, chargebacks), CSAT/CES/NPS limits, voice-of-customer reports, consumer law for refunds and cancellations. Also when someone pastes a ticket thread without saying "support". Ethical: no dark patterns in cancellation. Not for marketing text (copywriting) or acquiring customers (sales).
 
 Historical comparison: **tie**. Trigger record: 5/5 expected, 0/5 false, 3 run(s).
 
@@ -156,7 +156,7 @@ Historical comparison: **win**. Trigger record: 4/5 expected, 0/5 false, 3 run(s
 
 Guided copywriting command. Collects the brief, then writes with the existing offers, storytelling and copywriting skills.
 
-Historical comparison: **not applicable**. Trigger record: pending/5 expected, pending/5 false, pending run(s).
+Historical comparison: **not applicable**. No trigger record.
 
 ### sales
 
@@ -276,7 +276,7 @@ Core skills: `growth-analytics`.
 
 ### media-producer
 
->-
+Production role for images, video, 3D, voice and music: picks the route (AI generation, stock, live footage, Blender 3D, video made by code), makes and assembles the pieces, and checks them before publishing. Use proactively when someone needs a ready file, not a plan: "make this video", "generate the images for this ad", "render it in Blender", "turn this site into a launch video", "keep the character consistent", "export for Reels and Shorts", "can we use this music, voice or face", "does this need an AI label". Runs Blender CLI, ffmpeg, Remotion and connected generators, then QA (formats, captions, loudness) and licence, consent and label checks. Asks before any paid generation. Does not write hook and script strategy or creative tests (ad-creative-strategist), the story or episode scripts (storytelling skill), or sales and page copy (copywriting skill).
 
 Core skills: `media-production`.
 
@@ -375,7 +375,3 @@ Core skills: `market-research`.
 Performance specialist for websites, web apps and PWAs. Measures and fixes Core Web Vitals (LCP, INP, CLS), JS weight per route, images, fonts, audio and video, cache and CDN, service workers, Postgres queries (indexes, EXPLAIN, N+1, pagination) and infrastructure cost per user. Use proactively when creating or changing a landing page, list, heavy screen, media, data fetching, a new dependency or a database query, and whenever someone says something is slow. Always delivers a measured before and after. Does not redesign screens (ui-ux-designer) or decide architecture (nextjs-architect).
 
 Core skills: `web-performance`.
-
-## Historical PT-BR catalog
-
-The earlier detailed catalog was authored in Brazilian Portuguese. It is retained as historical project material and should not be read as fresh English evaluation evidence. The English metadata above is generated from each canonical `SKILL.md` and agent definition.

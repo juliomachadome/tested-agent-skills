@@ -6,7 +6,7 @@ The skills are ordinary Markdown folders with a `SKILL.md`. That makes their kno
 
 | Environment | Skill discovery | Agent definitions | Measured here | Notes |
 | --- | --- | --- | --- | --- |
-| Claude Code | Supported by `scripts/install.sh` | Native Claude subagents in `agents/` | Historical evaluation records are Claude-based | The existing runner uses the Claude CLI. |
+| Claude Code | Supported by `scripts/install.sh` | Native Claude subagents in `agents/` | Historical skill evaluations used Claude models | This repository publishes [aggregate evidence](evaluation-summary.md). The historical runner and holdouts remain private. |
 | Codex | Supported by `scripts/install.sh --target codex`; focused `--skill` and profiles are supported | Render a portable role brief with `scripts/role-to-prompt.py`; not a native Claude subagent | One isolated local smoke test is supported; no scored benchmark yet | The adapter prevents normal user configuration from loading. See [Codex guide](codex.md). |
 | Shared Agent Skills folder | Supported by `scripts/install.sh --target agents` | Harness-dependent | Not scored as a group | A reader must implement the folder-discovery behavior. |
 | Cursor and other Agent Skills readers | Format-compatible | Harness-dependent | No integration claim | Check that product's documented discovery folder. |

@@ -48,7 +48,7 @@ Use whenever the task is words a customer reads to decide, buy or stay - landing
 
 Path: `skills/customer-support/SKILL.md`
 
->-
+Draft customer replies, refund and cancellation guidance, help center articles, and escalation reports. Build support macros, set service levels, and investigate repeat contacts, backlog, or misleading bot resolution metrics.
 
 ## data-analysis
 
