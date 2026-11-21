@@ -10,6 +10,8 @@
 
 Both pages offered three templates and let the reviewer select one and edit a shift. The control put the working schedule in the first view and called the browser print action. The skill-assigned page showed a static example first, linked to the working schedule below, let the reviewer restore the original template, and downloaded a valid one-page PDF. Both rendered without horizontal page overflow at 320, 390, 768 and 1440 CSS px, page exceptions or external requests. Neither added a dedicated FAQ or a closing CTA. Those were outside the short brief.
 
+The project owner flagged repetition in the skill-assisted design during review. The skill-assigned page shows the schedule twice: a static grid near the top and an editable grid below. The control uses the editable schedule as its main product visual. The direct PDF and reset controls are useful additions, while another large schedule preview adds a stop before the core interaction. That is a negative finding on economy and proximity to the task in this case. The review is qualitative and uses one pair.
+
 ## Detailed brief with full page requirements
 
 [Fixture](../../evals/public/shiftfern-landing-ui-v2.json) · [PNG without the skill](shiftfern-completa-sem-skill.png) · [PNG with the skill](shiftfern-completa-com-skill.png)

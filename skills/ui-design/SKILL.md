@@ -37,6 +37,8 @@ Choose the starting layout from the primary use case. Start narrow when quick ph
 
 Remove boilerplate subtitles, repeated badges, nested panels and decoration whose absence would not change a decision or action. Start with alignment, type and spacing; add borders, fills or elevation only where they clarify grouping or interaction.
 
+For product pages, check that each section advances a distinct reader decision. When a working demo already explains the product, consider using it as the main product visual. A separate preview earns its space when it explains a different output, helps people understand a dense interface, or serves a required section.
+
 ## Principles
 1. **System before screen.** Scales for type, space, color, radius, elevation and motion are decided once as tokens; screens only pick from them.
 2. **Hierarchy comes from few levers.** Size, weight, tone, position, space. Two or three text tones, two or three weights. To emphasize one thing, quiet its competitors.
@@ -78,7 +80,7 @@ Remove boilerplate subtitles, repeated badges, nested panels and decoration whos
 2. **Gather constraints.** Platforms, themes (light, dark, high contrast), languages and longest strings, density, brand color, inputs.
 3. **Set or reuse tokens.** If none, create the minimum: neutral ramp, one action color, four status colors, 4-based spacing, 6 to 8 type roles, 2 to 3 radii, 3 shadows, 3 durations (`playbooks.md` 1).
 4. **Build in grayscale first**; add color last.
-4b. **Before building, scan `references/anti-patterns-polish.md` 1-1b. No brand given**: light neutral theme, one saturated action colour; dark or stylised on request. The primary action is the strongest element (filled, white label 4.5:1+, never a pale tint). No demo toggles in the delivered screen **[F]**.
+4b. **Choose visual character from the task.** For a distinct direction, use the product content, audience and relevant style reference. A neutral theme is a fallback for a routine screen. Use `references/anti-patterns-polish.md` for a polish review. Give the primary action enough contrast and visual priority. **[F]**
 5. **Specify states, do not defer them.** For every component you change, write the values: default, hover, focus-visible (2 px ring), pressed, disabled (Save disabled until the form changes), loading, error; and a non-colour cue for any status colour (icon on a banner). Screens: empty, loading, error, offline, success.
 6. **Verify with numbers.** Contrast for every text and boundary pair in every theme; computed styles against the source; 320, 390, 820, 1440 px, 200% zoom, reduced motion.
 7. **Report** in the output format below.
