@@ -36,8 +36,9 @@ Before writing code for an animation library (GSAP, three.js, Lottie, Rive, Moti
 
 ## 3. Explanation
 - Motion answers a user action (Next, slider, click on a part) and shows what changed; it never plays by itself.
-- One state per step. Show what changed and how the part looks after the movement. When the diagram adds information, keep its caption or accessible description in sync with the visible state.
-- Works without animation: text plus the final frame carry the meaning. If JavaScript drives the explainer, keep the instructions available without it. Previous, next, restart; keyboard reachable; step announced (`aria-live="polite"`). Never auto-advance faster than reading.
+- Draw the settled frame for each step before animating. Keep the changed part recognizable at the mobile viewport and show its new position, shape, or state. When geometry alone is ambiguous, use a local outline, pointer, or short label.
+- When a diagram teaches the step, give it an accessible name or description that identifies the part and its current state. Update it when the illustration changes. Add a visible caption if it clarifies details that are hard to see.
+- Text and the settled frame must carry the meaning with animation off. If JavaScript drives the explainer, put the complete instructions in the initial HTML so they stay readable without it. Provide keyboard-reachable previous, next, and restart controls and announce step changes (`aria-live="polite"`). Never auto-advance faster than reading.
 
 ## 4. Feedback in motion
 - Respond to a press within 100 ms (pressed state on pointer down, not on the server reply).
@@ -66,6 +67,7 @@ Open it in a browser (headless is fine):
 - [ ] Screenshots at first paint, mid-animation and settled: nothing overlaps, clips or jumps.
 - [ ] No console errors.
 - [ ] Reduced motion emulated: content complete, nothing loops.
+- [ ] Explainers: at mobile width, cover the step title and identify the changed part in each settled frame. Check the diagram's accessible name or description after changing steps. Disable JavaScript and read every instruction.
 - [ ] Fallback shows without WebGL or JS.
 - [ ] Console has no errors on the fallback path too (WebGL disabled).
 - [ ] Canvas and 3D: if the reanimate skill is installed in the project, record our page with the virtual clock and GPU trace and check in numbers: draws while the scene is still (expected 0), draw calls per frame, and the animated values against the motion table. Pass the options directly in the command and fit curves only from the trigger.
