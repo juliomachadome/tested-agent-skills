@@ -4,7 +4,10 @@ on:
   pull_request:
     paths:
       - .github/workflows/codex-skill-isolation.yml
+      - evals/public/lume-02-motion.json
       - scripts/audit-codex-context.py
+      - scripts/codex-skill-compare.py
+      - skills/web-motion/SKILL.md
   workflow_dispatch:
 
 permissions:
