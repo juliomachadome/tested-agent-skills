@@ -2,6 +2,8 @@
 
 This matrix covers the 35 skill directories. Native agents are evaluated separately. The groups follow evidence and testing needs, so some entries sit in a different section from the README. These cases are not the historical holdout and the matrix contains no new scores or compatibility claims.
 
+See the [skill improvement workflow and proposals](skill-improvement-workflow.md) for the change to test in each skill, when to avoid loading it, and how to gate shared changes in Codex and Claude Code.
+
 ## How to use the matrix
 
 1. **Brief the task.** Give the goal, source material and actual constraints. Include a complex task expressed in ordinary language. Leave out implementation decisions the skill should contribute. A fully specified brief can serve as a separate control.
