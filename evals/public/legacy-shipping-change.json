@@ -1,0 +1,15 @@
+{
+  "id": "legacy-shipping-change-v1",
+  "skill": "code-craft",
+  "prompt": "Esse cálculo de frete ficou chato de alterar. Organize o código e adicione retirada no local: speed igual a pickup custa zero em qualquer região válida. Mantenha a API, as validações e o comportamento dos pedidos que já funcionam. Entregue um módulo JavaScript ES, sem dependências. O arquivo atual é o único código do projeto.\n\nCurrent module:\n\nexport function quote({ subtotalCents, region, speed, coupon, member, weightGrams }) {\n  if (!Number.isInteger(subtotalCents) || subtotalCents < 0) throw new RangeError('subtotal');\n  if (!Number.isInteger(weightGrams) || weightGrams < 0) throw new RangeError('weight');\n  if (region !== 'metro' && region !== 'interior') throw new RangeError('region');\n  if (speed !== 'standard' && speed !== 'express') throw new RangeError('speed');\n\n  if (speed === 'standard' && region === 'metro') {\n    if (subtotalCents >= 8000 || coupon === 'FRETEGRATIS') return 0;\n    let fee = 900;\n    if (weightGrams > 2000) fee += 400;\n    if (member) fee -= 300;\n    return fee;\n  } else if (speed === 'standard' && region === 'interior') {\n    if (subtotalCents >= 12000 || coupon === 'FRETEGRATIS') return 0;\n    let fee = 1500;\n    if (weightGrams > 2000) fee += 400;\n    if (member) fee -= 300;\n    return fee;\n  } else if (speed === 'express' && region === 'metro') {\n    let fee = 1900;\n    if (weightGrams > 2000) fee += 700;\n    if (member) fee -= 300;\n    return fee;\n  } else {\n    let fee = 2600;\n    if (weightGrams > 2000) fee += 700;\n    if (member) fee -= 300;\n    return fee;\n  }\n}",
+  "expected_output": "An ES module preserving existing outcomes and accepting pickup.",
+  "followups": {
+    "add_region": "Entrou uma nova região, serra. No padrão custa 1900 centavos, com frete grátis a partir de 15000 centavos. No expresso custa 3200 centavos. Peso, desconto de membro, cupom e retirada seguem as mesmas regras das outras regiões. Faça a menor mudança que mantenha tudo funcionando. Mantenha a API.",
+    "add_service": "Agora há entrega agendada, speed igual a scheduled. Custa 1.300 centavos no metro e 2.100 no interior. Acrescente 500 centavos acima de 2.000 gramas e desconte 300 centavos para membros. Não há frete grátis nem cupom nessa modalidade. As demais modalidades, a retirada, as validações e a API seguem como estavam. Faça a menor mudança que mantenha tudo funcionando."
+  },
+  "assertions": [
+    "Verify supplied public API, valid orders, invalid keys, pickup and previous validation behavior.",
+    "Freeze stage one before revealing either follow-up. Start both follow-ups independently from that artifact.",
+    "Check expected outcomes first, then compare the number of places where each rule is encoded."
+  ]
+}

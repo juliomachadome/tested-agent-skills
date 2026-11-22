@@ -51,6 +51,8 @@ Immutability by default (`readonly`, records), pure functions for rules, effects
 ## 10. Legacy code
 Feathers: legacy is code without tests. Find a **seam** (a place to change behavior without editing there: parameter, constructor, subclass, module substitution), write **characterization tests** that record current output, then refactor. Sprout or wrap new code instead of editing tangled code when you cannot test. **[C]**
 
+When a rule table owns the complete set of valid keys, consider using that same table for lookup and validation. Group rules by the kind of change they usually see. For example, group shipping prices by region when regions are added often. Check how adding a service would change the same table. Cover invalid keys and unchanged behavior if you replace a separate list. **[F]**
+
 ## 11. Which reference to open
 | Need | Open |
 |---|---|

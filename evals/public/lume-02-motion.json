@@ -1,0 +1,11 @@
+{
+  "id": "lume-02-motion-v1",
+  "skill": "web-motion",
+  "prompt": "Faça um pequeno demonstrador em português para a Lume 02, uma luminária de mesa fictícia. Quero ver como trocar a cúpula: abrir o anel, levantar a cúpula e encaixar a nova. Deixe a pessoa avançar, voltar e recomeçar, inclusive no celular. Entregue um único HTML que eu consiga abrir direto, sem arquivos adicionais.",
+  "expected_output": "A standalone Portuguese HTML explainer for the fictional lamp with forward, back and restart controls.",
+  "assertions": [
+    "Check all three settled visual and written states, including reduced motion, at a mobile viewport.",
+    "Check keyboard navigation and access to the three instructions without JavaScript.",
+    "Inspect whether a relevant changed part remains identifiable after motion settles and whether animations stop."
+  ]
+}
