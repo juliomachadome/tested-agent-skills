@@ -1,0 +1,11 @@
+{
+  "id": "tilt-laptop-stand-v1",
+  "skill": "web-motion",
+  "prompt": "Make a small step-by-step demo for a fictional folding laptop stand. Show how to open the latch, raise the platform, and lock it at a new angle. Let me go forward, go back, and start over on my phone. Deliver one HTML file I can open directly.",
+  "expected_output": "A standalone interactive HTML explainer with three recognizable mechanical states.",
+  "assertions": [
+    "Inspect the settled raise and lock frames at 390 CSS pixels. The platform stays attached at its hinge, rises above the base, and remains fully visible.",
+    "Inspect the locked frame. The locking part meets its intended contact point, and the accessible description agrees with the visible diagram.",
+    "Check forward, back, and restart by keyboard. Check reduced motion and verify that all written instructions remain readable with JavaScript disabled."
+  ]
+}
