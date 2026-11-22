@@ -36,8 +36,8 @@ Before writing code for an animation library (GSAP, three.js, Lottie, Rive, Moti
 
 ## 3. Explanation
 - Motion answers a user action (Next, slider, click on a part) and shows what changed; it never plays by itself.
-- One state per step; the changed part is highlighted and named in text.
-- Works without animation: text plus the final frame carry the meaning. Previous, next, restart; keyboard reachable; step announced (`aria-live="polite"`). Never auto-advance faster than reading.
+- One state per step. Show what changed and how the part looks after the movement. When the diagram adds information, keep its caption or accessible description in sync with the visible state.
+- Works without animation: text plus the final frame carry the meaning. If JavaScript drives the explainer, keep the instructions available without it. Previous, next, restart; keyboard reachable; step announced (`aria-live="polite"`). Never auto-advance faster than reading.
 
 ## 4. Feedback in motion
 - Respond to a press within 100 ms (pressed state on pointer down, not on the server reply).
